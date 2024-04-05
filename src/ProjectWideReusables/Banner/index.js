@@ -1,6 +1,6 @@
 import React from "react";
 import './index.css'; 
-import Ginkgo from './ginkgo.jpg';
+import Ginkgo from '../../img/ginkgo.jpg';
 
 const Home = () => {
   return (
