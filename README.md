@@ -1,12 +1,9 @@
-# Adding our names
-Shajaat Ali
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Contributors
-
+Shajaat Ali
 Raj Pannu
 
 ## Available Scripts
