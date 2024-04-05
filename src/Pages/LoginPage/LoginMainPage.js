@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
-import backgroundImage from ".img/background.jpg";
-import loginIcon from ".img/login-icon.png";
+import backgroundImage from "../../img/background.jpg";
+import loginIcon from "../../img/login-icon.png";
 
 const Login = () => {
   const [username, setUsername] = useState("");

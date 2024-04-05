@@ -10,6 +10,7 @@ import CreatorsMainPage from './Pages/CreatorsPage/CreatorsMainPage'
 import SourceDataMainPage from './Pages/SourceDataPage/SourceDataMainPage' 
 import StudentEnrolmentAnalyzerMainPage from './Pages/StudentEnrolmentAnalyzerPage/StudentEnrolmentAnalyzerMainPage' 
 import SupCourseAnalyzerMainPage from './Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage' 
+import Login from './Pages/LoginPage/LoginMainPage';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/SourceData" element={<SourceDataMainPage />} />
         <Route path="/StudentEnrolmentAnalyzer" element={<StudentEnrolmentAnalyzerMainPage />} />
         <Route path="/SupCourseAnalyzer" element={<SupCourseAnalyzerMainPage />} />
+        <Route path="/login" element={<Login />} />
 
       </Routes>
     </HashRouter>
