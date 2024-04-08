@@ -12,7 +12,7 @@ import StudentEnrolmentAnalyzerMainPage from './Pages/StudentEnrolmentAnalyzerPa
 import SupCourseAnalyzerMainPage from './Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage' 
 import LoginMainPage from './Pages/LoginPage/LoginMainPage';
 import AboutMainPage from './Pages/AboutPage/AboutMainPage';
-
+import RegisterMainPage from './Pages/RegistrationPage/RegisterMainPage';
 
 function App() {
   return (
@@ -29,6 +29,7 @@ function App() {
         <Route path="/SupCourseAnalyzer" element={<SupCourseAnalyzerMainPage />} />
         <Route path="/Login" element={<LoginMainPage />} />
         <Route path="/About" element={<AboutMainPage />} />
+        <Route path="/Register" element={<RegisterMainPage />} />
 
       </Routes>
     </HashRouter>
