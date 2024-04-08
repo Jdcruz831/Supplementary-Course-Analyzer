@@ -42,10 +42,10 @@ const Register = () =>{
             <input type="password" placeholder="Re-Enter Password"/>
         </div>
         </div>
-        {action==="Sign Up"?<div></div>:<div className="forgot-password">Forgot Password? <span>Click Here!</span> </div>}
+        
         <div className="submit-container">
-            <div className={action==="Login"?"Submit gray":"submit"} onClick= {()=>{setAction("Sign Up")}}> Sign Up</div>
-            <div className={action==="Sign Up"?"submit gray":"submit"} onClick={()=>{setAction("Login")}}> Login</div>
+            
+            <div className="submit">Sign Up</div>
         
         </div>
     </div>
