@@ -2,6 +2,7 @@
 import './App.css';
 import { ThemeProvider } from '@emotion/react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
+import Banner from './ProjectWideReusables/Banner/banner';
 
 //imports from diffrent files
 import HomeMainPage from './Pages/HomePage/HomeMainPage' 
@@ -18,7 +19,7 @@ function App() {
   return (
      <div>
       
-
+      <Banner />
       <HashRouter>
       <Routes>
         <Route path="/" element={<HomeMainPage />} />
