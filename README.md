@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Contributors
 Shajaat Ali
 Raj Pannu
+Chi Andrus
 
 ## Available Scripts
 
