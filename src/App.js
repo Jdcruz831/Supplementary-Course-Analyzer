@@ -18,7 +18,6 @@ function App() {
   return (
      <div>
       
-      <Banner />
       <HashRouter>
       <Routes>
         <Route path="/" element={<HomeMainPage />} />
