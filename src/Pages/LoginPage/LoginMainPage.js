@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import "./Login.css";
-import backgroundImage from "../../img/background.jpg";
-import loginIcon from "../../img/login-icon.png";
-
+import backgroundImage from "./background.jpg";
+import loginIcon from "./login-icon.png";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginClicked, setLoginClicked] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = () => {
     setLoginClicked(true);
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -48,14 +52,18 @@ const Login = () => {
             <div className="input-container">
               <label htmlFor="password">Password</label>
               <input
-                type="password"
-                id="password"
-                style={{ 
-                  borderColor: loginClicked && !password && "red",
-                  borderWidth: loginClicked && !password && "2px" // Increase border width
-                }}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+  type={showPassword ? "text" : "password"}
+  id="password"
+  style={{ 
+    borderColor: loginClicked && !password && "red",
+    borderWidth: loginClicked && !password && "2px" // Increase border width
+  }}
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
+              <button className="toggle-password-button" onClick={togglePasswordVisibility}>
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </button>
             </div>
           </div>
 
