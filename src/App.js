@@ -1,4 +1,3 @@
-
 import './App.css';
 import { ThemeProvider } from '@emotion/react';
 import { HashRouter, Route, Routes } from 'react-router-dom';
@@ -36,8 +35,7 @@ function App() {
     </HashRouter>
 
     </div>
-  
-  )
+  );
 }
 
 export default App;
