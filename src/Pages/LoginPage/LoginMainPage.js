@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Login.css";
-import backgroundImage from "./background.jpg";
-import loginIcon from "./login-icon.png";
-import { Visibility, VisibilityOff } from "@material-ui/icons";
+import backgroundImage from "../../img/background.jpg";
+import loginIcon from "../../img/login-icon.png";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
