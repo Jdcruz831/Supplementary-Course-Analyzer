@@ -2,10 +2,17 @@ import React from 'react';
 import './About.css';
 import Ginkgo from '../../img/ginkgo.jpg';
 import { Typography } from '@mui/material';
+import DropdownMenu from '../../components/dropdown link menu/DropdownMenu';
 
 const About = () => {
   return (
     <div className='about-container'>
+      <div>
+        <DropdownMenu 
+          positionStyle={{ position: 'absolute', right: '5%', top: '35%' }}
+          iconStyle={{ fontSize: 'clamp(1rem, 5vw, 7.1rem)' }}
+        />
+      </div>
       <div className='about-header'>
         <img src={Ginkgo} alt='Ginkgo' className='header-image' />
         <div className='image-overlay'></div>
@@ -14,7 +21,7 @@ const About = () => {
             About Us
           </Typography>
         </div>
-        <div className='header-text'>
+        <div className='header-text'> 
           <Typography variant='h3' align='left' className='about-typography-h3'>
             Supplementary <br/> Course Analyzer
           </Typography>
