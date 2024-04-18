@@ -62,11 +62,11 @@
     font-size: 19px;
 }
 
-.forgot-password{
+.error-message{
+    align-items: center;
     padding-left: 62px;
-    margin-top:27px;
     color:black;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .forgot-password span{
