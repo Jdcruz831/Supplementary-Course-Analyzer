@@ -33,6 +33,18 @@ export const TopNav = () => {
           Home
         </Button>
         <Button
+          href="/#/search"
+          variant="contained"
+          size="small"
+          sx={{
+            bgcolor: (theme) => theme.palette.primary.main,
+            color: "white",
+            "&:hover": { backgroundColor: "#124459" },
+          }}
+        >
+          Search
+        </Button>
+        <Button
           href="/#/CourseTimeAnalyzer"
           variant="contained"
           size="small"
