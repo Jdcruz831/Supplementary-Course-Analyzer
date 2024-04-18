@@ -13,6 +13,7 @@ import SupCourseAnalyzerMainPage from "./Pages/SupCourseAnalyzer/SupCourseAnalyz
 import LoginMainPage from "./Pages/LoginPage/LoginMainPage";
 import AboutMainPage from "./Pages/AboutPage/AboutMainPage";
 import RegisterMainPage from "./Pages/RegistrationPage/RegisterMainPage";
+import { Search } from "./Pages/Search/search";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             path="/SupCourseAnalyzer"
             element={<SupCourseAnalyzerMainPage />}
           />
+          <Route path="/search" element={<Search />} />
           <Route path="/Login" element={<LoginMainPage />} />
           <Route path="/About" element={<AboutMainPage />} />
           <Route path="/Register" element={<RegisterMainPage />} />
