@@ -8,7 +8,7 @@ import HomeMainPage from "./Pages/HomePage/HomeMainPage";
 import CourseTimeAnalyzerMainPage from "./Pages/CourseTimeAnalyzerPage/CourseTimeAnalyzerMainPage";
 import CreatorsMainPage from "./Pages/CreatorsPage/CreatorsMainPage";
 import SourceDataMainPage from "./Pages/SourceDataPage/SourceDataMainPage";
-import StudentEnrolmentAnalyzerMainPage from "./Pages/StudentEnrolmentAnalyzerPage/StudentEnrolmentAnalyzerMainPage";
+import StudentEnrollmentAnalyzerMainPage from "./Pages/StudentEnrollmentAnalyzerPage/StudentEnrollmentAnalyzerMainPage";
 import SupCourseAnalyzerMainPage from "./Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage";
 import LoginMainPage from "./Pages/LoginPage/LoginMainPage";
 import AboutMainPage from "./Pages/AboutPage/AboutMainPage";
@@ -28,8 +28,8 @@ function App() {
           <Route path="/Creators" element={<CreatorsMainPage />} />
           <Route path="/SourceData" element={<SourceDataMainPage />} />
           <Route
-            path="/StudentEnrolmentAnalyzer"
-            element={<StudentEnrolmentAnalyzerMainPage />}
+            path="/StudentEnrollmentAnalyzer"
+            element={<StudentEnrollmentAnalyzerMainPage />}
           />
           <Route
             path="/SupCourseAnalyzer"

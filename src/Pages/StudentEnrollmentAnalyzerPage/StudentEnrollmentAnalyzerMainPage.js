@@ -1,16 +1,16 @@
 import React from "react";
 import DefaultLayout from "../../components/default/layout";
 
-function StudentEnrolmentAnalyzerMainPage() {
+function StudentEnrollmentAnalyzerMainPage() {
   return (
     <DefaultLayout>
       <div className="App">
         <h1>
-          <span>StudentEnrolmentAnalyzerMainPage</span>
+          <span>StudentEnrollmentAnalyzerMainPage</span>
         </h1>
       </div>
     </DefaultLayout>
   );
 }
 
-export default StudentEnrolmentAnalyzerMainPage;
+export default StudentEnrollmentAnalyzerMainPage;
