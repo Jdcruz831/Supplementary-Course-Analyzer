@@ -7,7 +7,7 @@ Shajaat Ali
 Raj Pannu
 Shaquan Carolina
 Chi Andrus
-
+Kyle Diep
 ## Available Scripts
 
 In the project directory, you can run:
