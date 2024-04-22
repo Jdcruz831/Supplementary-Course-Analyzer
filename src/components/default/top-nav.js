@@ -2,6 +2,7 @@ import { Box, Button, Stack, useTheme } from "@mui/material";
 import React from "react";
 import Ginkgo from "../../img/ginkgo.jpg";
 import { Typography } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 export const TopNav = () => {
   const theme = useTheme();
@@ -132,28 +133,32 @@ export const TopNav = () => {
           }}
         >
           <Stack>
-            <Typography
-              variant="h4"
-              align="left"
-              fontFamily="BlinkMacSystemFont"
-              style={{
-                color: "rgba(255, 255, 255, 1)",
-                textShadow: "black 2px 2px",
-              }}
-            >
-              Supplementary <br /> Course Analyzer
-            </Typography>
-            <Typography
-              variant="h5"
-              align="left"
-              fontFamily="BlinkMacSystemFont"
-              style={{
-                color: "rgba(196, 181, 129, 1)",
-                textShadow: "black 2px 2px",
-              }}
-            >
-              Sacramento State
-            </Typography>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Typography
+                variant="h4"
+                align="left"
+                fontFamily="BlinkMacSystemFont"
+                style={{
+                  color: "rgba(255, 255, 255, 1)",
+                  textShadow: "black 2px 2px",
+                }}
+              >
+                Supplementary <br /> Course Analyzer
+              </Typography>
+            </Link>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Typography
+                variant="h5"
+                align="left"
+                fontFamily="BlinkMacSystemFont"
+                style={{
+                  color: "rgba(196, 181, 129, 1)",
+                  textShadow: "black 2px 2px",
+                }}
+              >
+                Sacramento State
+              </Typography>
+            </Link>
           </Stack>
         </Box>
       </Box>
