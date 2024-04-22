@@ -104,6 +104,18 @@ function HomeMainPage() {
           >
             <Typography fontWeight="bold">Source Data</Typography>
           </Grid>
+          <Grid
+            item
+            component={Button}
+            href="/#/About"
+            sx={{
+              p: 2,
+              justifyContent: "left",
+              bgcolor: (theme) => theme.palette.grey.main,
+            }}
+          >
+            <Typography fontWeight="bold">About Us</Typography>
+          </Grid>
         </Grid>
         <Grid
           item
