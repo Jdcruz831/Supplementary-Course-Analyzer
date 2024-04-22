@@ -84,7 +84,7 @@ export const TopNav = () => {
         </Button>
 
         <Button
-          href="/#/StudentEnrolmentAnalyzer"
+          href="/#/StudentEnrollmentAnalyzer"
           variant="contained"
           size="small"
           sx={{
@@ -93,7 +93,7 @@ export const TopNav = () => {
             "&:hover": { backgroundColor: "#124459" },
           }}
         >
-          Student Enrolment Analyzer
+          Student Enrollment Analyzer
         </Button>
 
         <Button
