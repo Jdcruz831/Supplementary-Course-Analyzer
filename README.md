@@ -6,13 +6,13 @@ This App will be used to help professors at Sac State create PAL classes for the
 
 ## Table Of Contents
 
-    -[Background](#background)
-    -[Technology](#technology)
-    -[Testing](#testing)
-    -[Deployment](#deployment)
-    -[Developer Instructions](#developer-instructions)
-    -[Contributors](#contributors)
-    -[Installation](#installation)
+[Background](#background)
+[Technology](#technology)
+[Testing](#testing)
+[Deployment](#deployment)
+[Developer Instructions](#developer-instructions)
+[Contributors](#contributors)
+[Installation](#installation)
 
 ## Background
 
