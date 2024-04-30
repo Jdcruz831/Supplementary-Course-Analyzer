@@ -11,7 +11,7 @@ import SourceDataMainPage from "./Pages/SourceDataPage/SourceDataMainPage";
 import StudentEnrollmentAnalyzerMainPage from "./Pages/StudentEnrollmentAnalyzerPage/StudentEnrollmentAnalyzerMainPage";
 import SupCourseAnalyzerMainPage from "./Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage";
 import LoginMainPage from "./Pages/LoginPage/LoginMainPage";
-import AboutMainPage from "./Pages/AboutPage/AboutMainPage";
+import About from "./Pages/About/About";
 import RegisterMainPage from "./Pages/RegistrationPage/RegisterMainPage";
 import { Search } from "./Pages/Search/search";
 
@@ -37,7 +37,7 @@ function App() {
           />
           <Route path="/search" element={<Search />} />
           <Route path="/Login" element={<LoginMainPage />} />
-          <Route path="/About" element={<AboutMainPage />} />
+          <Route path="/About" element={<About />} />
           <Route path="/Register" element={<RegisterMainPage />} />
         </Routes>
       </HashRouter>
