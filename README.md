@@ -32,10 +32,21 @@ Our Project takes all the course thats have a PAL courses associated with them a
 ## Developer Instructions
 
 ## Prototyping Images
+Prototype Home Page
+![proto_home_page](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/proto_home_page.JPG)
 
+Prototype Login Page
+![Proto_Login_Page](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/Proto_Login_Page.png)
 
 ## Current Examples
+Home Page
+![home_page](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/home_page.JPG)
 
+Login Page
+![login](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/login.PNG)
+
+Registration Page
+![register](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/register.PNG)
 
 ## Contributors
 
