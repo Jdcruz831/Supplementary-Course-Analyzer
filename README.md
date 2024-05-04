@@ -33,9 +33,11 @@ Our Project takes all the course thats have a PAL courses associated with them a
 
 ## Prototyping Images
 Prototype Home Page
+
 ![proto_home_page](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/proto_home_page.JPG)
 
 Prototype Login Page
+
 ![Proto_Login_Page](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/Proto_Login_Page.png)
 
 ## Current Examples
