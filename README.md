@@ -31,6 +31,12 @@ Our Project takes all the course thats have a PAL courses associated with them a
 
 ## Developer Instructions
 
+## Prototyping Images
+
+
+## Current Examples
+
+
 ## Contributors
 
 Shajaat Ali\
