@@ -11,6 +11,9 @@ Chi Andrus
 ## Available Scripts
 
 In the project directory, you can run:
+## ER Diagram
+
+![ER Diagram](erd-diagram.png)
 
 ### `npm start`
 
