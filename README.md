@@ -32,6 +32,7 @@ Our Project takes all the course thats have a PAL courses associated with them a
 ## Developer Instructions
 
 ## Prototyping Images
+ERD Diagram 
 
 ![erd](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/erd.png)
 
