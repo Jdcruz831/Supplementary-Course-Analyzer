@@ -32,6 +32,9 @@ Our Project takes all the course thats have a PAL courses associated with them a
 ## Developer Instructions
 
 ## Prototyping Images
+
+![erd](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/erd.png)
+
 Prototype Home Page
 
 ![proto_home_page](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/proto_home_page.JPG)
