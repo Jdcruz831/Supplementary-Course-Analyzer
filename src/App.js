@@ -5,7 +5,7 @@ import Banner from "./ProjectWideReusables/Banner/banner";
 
 //imports from diffrent files
 import HomeMainPage from "./Pages/HomePage/HomeMainPage";
-import CourseTimeAnalyzerMainPage from "./Pages/CourseTimeAnalyzerPage/CourseTimeAnalyzerMainPage";
+import CourseTimeAnalyzer from "./Pages/CourseTimeAnalyzerPage/CourseTimeAnalyzer";
 import CreatorsMainPage from "./Pages/CreatorsPage/CreatorsMainPage";
 import SourceDataMainPage from "./Pages/SourceDataPage/SourceDataMainPage";
 import StudentEnrollmentAnalyzerMainPage from "./Pages/StudentEnrollmentAnalyzerPage/StudentEnrollmentAnalyzerMainPage";
@@ -21,10 +21,7 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<HomeMainPage />} />
-          <Route
-            path="/CourseTimeAnalyzer"
-            element={<CourseTimeAnalyzerMainPage />}
-          />
+          <Route path="/CourseTimeAnalyzer" element={<CourseTimeAnalyzer />} />
           <Route path="/Creators" element={<CreatorsMainPage />} />
           <Route path="/SourceData" element={<SourceDataMainPage />} />
           <Route

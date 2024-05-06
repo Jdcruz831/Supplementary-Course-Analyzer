@@ -10,6 +10,7 @@ import {
   autocompleteClasses,
   IconButton,
   Drawer,
+  useMediaQuery,
 } from "@mui/material";
 import React, { useState } from "react";
 import Ginkgo from "../../img/ginkgo.jpg";
@@ -33,6 +34,9 @@ const menuOptions = [
 ];
 
 export const TopNav = () => {
+  const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up("lg"));
+  const imageSize = isLargeScreen ? "210px" : "150px";
+
   const buttonStyle = {
     p: 1,
     textTransform: "none",
@@ -61,7 +65,10 @@ export const TopNav = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          px: 6,
+          px: {
+            xs: 1,
+            md: 6,
+          },
         }}
       >
         <Box>
@@ -69,7 +76,7 @@ export const TopNav = () => {
             <img
               src="https://www.csus.edu/NewCSUS2019-global-assets/_internal/images/logo-horizontal.png"
               alt="Sac State logo"
-              style={{ maxWidth: "210px", height: "auto" }}
+              style={{ maxWidth: imageSize, height: "auto" }}
             />
           </RouterLink>
         </Box>
@@ -87,7 +94,11 @@ export const TopNav = () => {
           }}
           role="menu"
         >
-          <ListItem role="menuitem" disablePadding sx={{ marginRight: 2 }}>
+          <ListItem
+            role="menuitem"
+            disablePadding
+            sx={{ display: { xs: "none", md: "flex" }, mr: 2 }}
+          >
             <RouterLink to="https://www.csus.edu/apply/index.html">
               <ListItemText
                 primary="APPLY"
@@ -99,7 +110,11 @@ export const TopNav = () => {
               />
             </RouterLink>
           </ListItem>
-          <ListItem role="menuitem" disablePadding sx={{ marginRight: 2 }}>
+          <ListItem
+            role="menuitem"
+            disablePadding
+            sx={{ display: { xs: "none", md: "flex" }, mr: 2 }}
+          >
             <RouterLink to="https://www.csus.edu/experience/index.html">
               <ListItemText
                 primary="EXPERIENCE"
@@ -111,7 +126,11 @@ export const TopNav = () => {
               />
             </RouterLink>
           </ListItem>
-          <ListItem role="menuitem" disablePadding>
+          <ListItem
+            role="menuitem"
+            disablePadding
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
             <RouterLink
               to="https://www.csus.edu/giving"
               sx={{ marginRight: 2 }}
@@ -197,7 +216,10 @@ export const TopNav = () => {
             justifyContent: "left",
             alignItems: "center",
             textAlign: "center",
-            pl: 20,
+            pl: {
+              xs: 5,
+              md: 20,
+            },
           }}
         >
           <Stack>
