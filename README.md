@@ -13,12 +13,13 @@ This App will be used to help professors at Sac State create PAL classes for the
 [Developer Instructions](#developer-instructions)
 [Contributors](#contributors)
 [Installation](#installation)
+[Timeline](#timeline)
 
 ## Background
 
-PAL stands for Peer Assissted Learning, which is basically a course in which students who have already taken a course come and help mentor/tutor other students who are currently taking the course. The Professors at Sac State have been having a hard time coming up with scheduling the PAL courses. The issue they have been facing is picking a good time for each PAL course to schedule so that its accessible to the students who need it.
+The professors at Sacramento State have been struggling to generate schedules for PAL courses. The challenge they face is selecting a suitable time for each PAL course to ensure it's accessible to the students who need it. The goal of the Sac State PAL Course Analyzer is to assist the PAL program in its class scheduling process. Our project aggregates all courses that have an associated PAL class, examines the scheduled times for these courses, and identifies which students are enrolled in which courses to select the optimal time for a PAL course.
 
-Our Project takes all the course thats have a PAL courses associated with them and views all the scheduled times for the courses and sees which student are in enrolled in which courses and pick the best time for a PAL course.
+Peer Assisted Learning (PAL) offers 1-unit courses available for students enrolled in gateway science and math courses. Students who have already taken a course come and help mentor/tutor other students who are currently taking the course. It gives an opportunity for Sacramento State students to give back and help their peers in their pursuit of education.
 
 ## Technology
 
@@ -69,3 +70,7 @@ Ian Charamuga
 
 npm install\
 npm start
+
+## Timeline
+
+![jiratimeline](https://github.com/Jdcruz831/Supplementary-Course-Analyzer/blob/main/src/img/jiratimeline.png)
