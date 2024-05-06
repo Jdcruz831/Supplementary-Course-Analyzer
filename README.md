@@ -1,35 +1,55 @@
 # Supplementary Course Analyzer
 
-This App will be used to help professors at Sac State create PAL classes for the students
+This App will be used to help professors at Sac State create PAL classes for the students.
 
-![Sac State Logo](https://github.com/Jdcruz831/Supplementary-Course-Analyzer/blob/main/src/img/sacstatelogo.png)
+## Contributors
+Shajaat Ali\
+Raj Pannu\
+Shaquan Carolina\
+Chi Andrus\
+Kyle Diep\
+JD Cruz\
+David Chatla\
+Ian Charamuga
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Table Of Contents
 
-[Background](#background)
-[Technology](#technology)
-[Testing](#testing)
-[Deployment](#deployment)
-[Developer Instructions](#developer-instructions)
-[Contributors](#contributors)
-[Installation](#installation)
+- [Background](#background)
+- [Technology](#technology)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Developer Instructions](#developer-instructions)
+- [Contributors](#contributors)
+- [Installation](#installation)
 
 ## Background
 
-PAL stands for Peer Assissted Learning, which is basically a course in which students who have already taken a course come and help mentor/tutor other students who are currently taking the course. The Professors at Sac State have been having a hard time coming up with scheduling the PAL courses. The issue they have been facing is picking a good time for each PAL course to schedule so that its accessible to the students who need it.
+PAL stands for Peer Assisted Learning, which is a course in which students who have already taken a course come and help mentor/tutor other students who are currently taking the course. The Professors at Sac State have been having a hard time scheduling the PAL courses. The issue they have been facing is picking a good time for each PAL course to schedule so that it's accessible to the students who need it.
 
-Our Project takes all the course thats have a PAL courses associated with them and views all the scheduled times for the courses and sees which student are in enrolled in which courses and pick the best time for a PAL course.
+Our Project takes all the courses that have PAL courses associated with them, views all the scheduled times for the courses, and sees which students are enrolled in which courses to pick the best time for a PAL course.
 
 ## Technology
 
--Tech Stack: React, Node.js, MaterialsUI, Firebase,\
--Status: Developmental stages
+- Tech Stack: React, Node.js, Material-UI, Firebase
+- Status: Developmental stages
 
 ## Testing
 
 ## Deployment
 
 ## Developer Instructions
+
+## ER Diagram
+
+![ER Diagram](erd-diagram.png)
 
 ## Prototyping Images
 ERD Diagram 
@@ -54,16 +74,8 @@ Login Page
 Registration Page
 ![register](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/register.PNG)
 
-## Contributors
-
-Shajaat Ali\
-Raj Pannu\
-Shaquan Carolina\
-Chi Andrus\
-Kyle Diep\
-JD Cruz\
-David Chatla\
-Ian Charamuga
+## Sac State Logo
+![Sac State Logo](https://github.com/Jdcruz831/Supplementary-Course-Analyzer/blob/main/src/img/sacstatelogo.png)
 
 ## Installation
 
