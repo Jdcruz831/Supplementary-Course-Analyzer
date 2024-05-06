@@ -1,16 +1,15 @@
-import React from 'react';
+import React from "react";
+import DefaultLayout from "../../components/default/layout";
 
 function CourseTimeAnalyzerMainPage() {
   return (
-    <div className="App">
-        
-        
-    
-
-  <h1><span>CourseTimeAnalyzerMainPage</span></h1>
-
-    </div>
-
+    <DefaultLayout>
+      <div className="App">
+        <h1>
+          <span>CourseTimeAnalyzerMainPage</span>
+        </h1>
+      </div>
+    </DefaultLayout>
   );
 }
 

@@ -13,5 +13,11 @@ export const theme = createTheme({
       birch: "#dad490",
       hornet: "#e6b711",
     },
+    grey: {
+      main: "#acacac",
+      dark: "#8a8a8a",
+      darker: "#676767",
+      darkest: "#454545",
+    },
   },
 });

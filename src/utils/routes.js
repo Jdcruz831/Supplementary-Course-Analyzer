@@ -5,10 +5,10 @@ import HomeMainPage from "../Pages/HomePage/HomeMainPage";
 import CourseTimeAnalyzerMainPage from "../Pages/CourseTimeAnalyzerPage/CourseTimeAnalyzerMainPage";
 import CreatorsMainPage from "../Pages/CreatorsPage/CreatorsMainPage";
 import SourceDataMainPage from "../Pages/SourceDataPage/SourceDataMainPage";
-import StudentEnrolmentAnalyzerMainPage from "../Pages/StudentEnrolmentAnalyzerPage/StudentEnrolmentAnalyzerMainPage";
+import StudentEnrollmentAnalyzerMainPage from "../Pages/StudentEnrollmentAnalyzerPage/StudentEnrollmentAnalyzerMainPage";
 import SupCourseAnalyzerMainPage from "../Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage";
 import LoginMainPage from "../Pages/LoginPage/LoginMainPage";
-import AboutMainPage from "../Pages/AboutPage/AboutMainPage";
+import About from "../Pages/About/AboutMain";
 
 const RouteProvider = () => {
   return (
@@ -22,15 +22,15 @@ const RouteProvider = () => {
         <Route path="/Creators" element={<CreatorsMainPage />} />
         <Route path="/SourceData" element={<SourceDataMainPage />} />
         <Route
-          path="/StudentEnrolmentAnalyzer"
-          element={<StudentEnrolmentAnalyzerMainPage />}
+          path="/StudentEnrollmentAnalyzer"
+          element={<StudentEnrollmentAnalyzerMainPage />}
         />
         <Route
           path="/SupCourseAnalyzer"
           element={<SupCourseAnalyzerMainPage />}
         />
         <Route path="/Login" element={<LoginMainPage />} />
-        <Route path="/About" element={<AboutMainPage />} />
+        <Route path="/About" element={<About />} />
       </Routes>
     </HashRouter>
   );

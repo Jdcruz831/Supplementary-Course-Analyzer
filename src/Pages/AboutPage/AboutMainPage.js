@@ -3,6 +3,7 @@ import './About.css';
 import Ginkgo from '../../img/ginkgo.jpg';
 import { Typography } from '@mui/material';
 import DropdownMenu from '../../components/dropdown link menu/DropdownMenu';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   return (
@@ -22,12 +23,16 @@ const About = () => {
           </Typography>
         </div>
         <div className='header-text'> 
-          <Typography variant='h3' align='left' className='about-typography-h3'>
-            Supplementary <br/> Course Analyzer
-          </Typography>
-          <Typography variant='h4' align='left' className='about-typography-h4'>
-            Sacramento State
-          </Typography>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Typography variant='h3' align='left' className='about-typography-h3'>
+              Supplementary <br/> Course Analyzer
+            </Typography>
+          </Link>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Typography variant='h4' align='left' className='about-typography-h4'>
+              Sacramento State
+            </Typography>
+          </Link>
         </div>
       </div>
       <div className='about-background'>
@@ -41,7 +46,7 @@ const About = () => {
           </p>
           <p>
             The Supplementary Course Analyzer aims to solve this problem by providing a website that will analyze course times and 
-            determine optimal times for supplementary courses, while minimizng interference with major courses. We aim to make PAL courses 
+            determine optimal times for supplementary courses, while minimizing interference with major courses. We aim to make PAL courses 
             more accessible to students and help the PAL program accomplish their goal of helping students learn.
           </p>
         </div>
