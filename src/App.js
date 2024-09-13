@@ -12,7 +12,8 @@ import StudentEnrollmentAnalyzerMainPage from "./Pages/StudentEnrollmentAnalyzer
 import SupCourseAnalyzerMainPage from "./Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage";
 import LoginMainPage from "./Pages/LoginPage/LoginMainPage";
 import About from "./Pages/About/About";
-import RegisterMainPage from "./Pages/RegistrationPage/RegisterMainPage";
+// import RegisterMainPage from "./Pages/RegistrationPage/RegisterMainPage";
+import RegisterMainPage from "./Pages/RegistrationPage/register";
 import { Search } from "./Pages/Search/search";
 import app from "./utils/firebase";
 
