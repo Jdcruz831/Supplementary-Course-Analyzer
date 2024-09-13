@@ -8,6 +8,7 @@ import SourceDataMainPage from "../Pages/SourceDataPage/SourceDataMainPage";
 import StudentEnrollmentAnalyzerMainPage from "../Pages/StudentEnrollmentAnalyzerPage/StudentEnrollmentAnalyzerMainPage";
 import SupCourseAnalyzerMainPage from "../Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage";
 import LoginMainPage from "../Pages/LoginPage/LoginMainPage";
+import RegistrationMainPage from "../Pages/RegistrationPage/RegistrationMainPage";
 import About from "../Pages/About/AboutMain";
 
 const RouteProvider = () => {
@@ -30,6 +31,8 @@ const RouteProvider = () => {
           element={<SupCourseAnalyzerMainPage />}
         />
         <Route path="/Login" element={<LoginMainPage />} />
+
+        <Route path="/Register" element={<RegistrationMainPage />} />
         <Route path="/About" element={<About />} />
       </Routes>
     </HashRouter>

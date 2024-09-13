@@ -14,6 +14,7 @@ import LoginMainPage from "./Pages/LoginPage/LoginMainPage";
 import About from "./Pages/About/About";
 import RegisterMainPage from "./Pages/RegistrationPage/RegisterMainPage";
 import { Search } from "./Pages/Search/search";
+import app from "./utils/firebase";
 
 function App() {
   return (
