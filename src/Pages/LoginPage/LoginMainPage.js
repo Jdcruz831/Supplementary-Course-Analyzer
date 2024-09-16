@@ -5,6 +5,8 @@ import loginIcon from "../../img/login-icon.png";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid, TextField } from '@mui/material';
+
 
 const Login = () => {
   const [email, setEmail] = useState(""); // Changed 'username' to 'email'
@@ -19,7 +21,7 @@ const Login = () => {
     setErrorMessage("");
 
     if (!email || !password) {
-      setErrorMessage("Please enter email and password");
+      setErrorMessage("Please enter Email and Password");
       return;
     }
 
@@ -40,6 +42,16 @@ const Login = () => {
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -100,6 +112,65 @@ const Login = () => {
             >
               Login
             </button>
+          </div>
+          <div>
+            <button style={{ background: "#0FA153" }} onClick={handleOpen}>
+              Create New Account
+            </button>
+
+            <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Create Account
+        </DialogTitle>
+        <DialogContent>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="First Name"
+                label="First Name"
+                type="text"
+                fullWidth
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                margin="dense"
+                id="Last Name"
+                label="Last Name"
+                type="text"
+                fullWidth
+                variant="outlined"
+              />
+            </Grid>
+          </Grid>
+          <TextField
+            margin="dense"
+            id="Email"
+            label="Email"
+            type="email"
+            fullWidth
+            variant="outlined"
+          />
+          <TextField
+            margin="dense"
+            id="password"
+            label="Password"
+            type="password"
+            fullWidth
+            variant="outlined"
+          />
+        </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} style={{ background: "#0FA153" }}>
+                Submit
+              </Button>
+              <Button onClick={handleClose} style={{ background: "#0FA153" }}>
+                X
+              </Button>
+            </DialogActions>
+          </Dialog>
           </div>
         </div>
       </div>
