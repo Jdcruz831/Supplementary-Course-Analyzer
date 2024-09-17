@@ -16,6 +16,10 @@ import About from "./Pages/About/About";
 import RegisterMainPage from "./Pages/RegistrationPage/register";
 import { Search } from "./Pages/Search/search";
 import app from "./utils/firebase";
+//import authentication
+import Login from './Pages/Authentication/Loginauth';
+import Logout from './Pages/Authentication/Logoutauth';
+import ProtectedRoute from './Pages/Authentication/ProtectedRoute';
 
 function App() {
   return (
@@ -34,10 +38,11 @@ function App() {
             path="/SupCourseAnalyzer"
             element={<SupCourseAnalyzerMainPage />}
           />
-          <Route path="/search" element={<Search />} />
-          <Route path="/Login" element={<LoginMainPage />} />
+          <Route path="/search" element={<Search />}/>
+          <Route path="/Login" element={<LoginMainPage />}component={Login} />
           <Route path="/About" element={<About />} />
           <Route path="/Register" element={<RegisterMainPage />} />
+          
         </Routes>
       </HashRouter>
     </div>
