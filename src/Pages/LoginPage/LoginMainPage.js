@@ -3,13 +3,13 @@ import "./Login.css";
 import backgroundImage from "../../img/background.jpg";
 import loginIcon from "../../img/login-icon.png";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid, TextField } from '@mui/material';
 
 
 const Login = () => {
-  const [email, setEmail] = useState(""); // Changed 'username' to 'email'
+  const [email, setEmail] = useState(""); 
   const [password, setPassword] = useState("");
   const [loginClicked, setLoginClicked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -52,6 +52,35 @@ const Login = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  // Manage Password
+  const [openManagePassword, setOpenManagePassword] = useState(false);
+  const [emailForReset, setEmailForReset] = useState('');
+  const [errorResetPassword, setErrorResetPassword] = useState('');
+
+  const handleManagePasswordOpen = () => {
+    setErrorResetPassword('');
+    setEmailForReset('');
+    setOpenManagePassword(true);
+  };
+
+  const handleManagePasswordClose = () => {
+    setOpenManagePassword(false);
+  };
+
+  const handleSendPasswordResetEmail = () => {
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, emailForReset)
+      .then(() => {
+        // Password reset email sent!
+        alert('Password reset email sent!');
+        setOpenManagePassword(false);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setErrorResetPassword(errorMessage);
+      });
   };
 
   return (
@@ -118,59 +147,92 @@ const Login = () => {
               Create New Account
             </button>
 
+            <div className="manage-password" onClick={handleManagePasswordOpen}>
+              Manage Password
+            </div>
+
             <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Create Account
-        </DialogTitle>
-        <DialogContent>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="First Name"
-                label="First Name"
-                type="text"
-                fullWidth
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                margin="dense"
-                id="Last Name"
-                label="Last Name"
-                type="text"
-                fullWidth
-                variant="outlined"
-              />
-            </Grid>
-          </Grid>
-          <TextField
-            margin="dense"
-            id="Email"
-            label="Email"
-            type="email"
-            fullWidth
-            variant="outlined"
-          />
-          <TextField
-            margin="dense"
-            id="password"
-            label="Password"
-            type="password"
-            fullWidth
-            variant="outlined"
-          />
-        </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} style={{ background: "#0FA153" }}>
-                Submit
-              </Button>
-              <Button onClick={handleClose} style={{ background: "#0FA153" }}>
-                X
-              </Button>
-            </DialogActions>
-          </Dialog>
+              <DialogTitle>Create Account
+              </DialogTitle>
+              <DialogContent>
+                <Grid container spacing={2}>
+                  <Grid item xs={6}>
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="First Name"
+                      label="First Name"
+                      type="text"
+                      fullWidth
+                      variant="outlined"
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      margin="dense"
+                      id="Last Name"
+                      label="Last Name"
+                      type="text"
+                      fullWidth
+                      variant="outlined"
+                    />
+                  </Grid>
+                </Grid>
+                <TextField
+                  margin="dense"
+                  id="Email"
+                  label="Email"
+                  type="email"
+                  fullWidth
+                  variant="outlined"
+                />
+                <TextField
+                  margin="dense"
+                  id="password"
+                  label="Password"
+                  type="password"
+                  fullWidth
+                  variant="outlined"
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose} style={{ background: "#0FA153" }}>
+                  Submit
+                </Button>
+                <Button onClick={handleClose} style={{ background: "#0FA153" }}>
+                  X
+                </Button>
+              </DialogActions>
+            </Dialog>
+
+            {/* Manage Password Dialog */}
+            <Dialog open={openManagePassword} onClose={handleManagePasswordClose}>
+              <DialogTitle>Manage Password</DialogTitle>
+              <DialogContent>
+                {errorResetPassword && (
+                  <div className="error-text">{errorResetPassword}</div>
+                )}
+                <TextField
+                  autoFocus
+                  margin="dense"
+                  id="emailForReset"
+                  label="Email Address"
+                  type="email"
+                  fullWidth
+                  variant="outlined"
+                  value={emailForReset}
+                  onChange={(e) => setEmailForReset(e.target.value)}
+                />
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleSendPasswordResetEmail} style={{ background: "#0FA153" }}>
+                  Submit
+                </Button>
+                <Button onClick={handleManagePasswordClose} style={{ background: "#0FA153" }}>
+                  X
+                </Button>
+              </DialogActions>
+            </Dialog>
           </div>
         </div>
       </div>
