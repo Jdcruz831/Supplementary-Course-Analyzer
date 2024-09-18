@@ -1,39 +1,51 @@
+import React, { useEffect, useMemo, useState } from "react";
+
 import {
-  Button,
   Card,
   Grid,
-  IconButton,
-  InputAdornment,
   Stack,
   TableContainer,
   TablePagination,
   TextField,
+  Autocomplete,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
 } from "@mui/material";
+import uniq from "lodash/uniq";
+
 import DefaultLayout from "../../components/default/layout";
-import SearchIcon from "@mui/icons-material/Search";
-import React, { useState } from "react";
-import { Table, TableBody, TableCell, TableRow, Paper } from "@mui/material";
 import { courses } from "../../courses";
 
 export const Search = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [filteredCourses, setFilteredCourses] = useState(courses);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [filter, setFilter] = useState({
+    keyword: "",
+    professor: "",
+    time: "",
+    day: "",
+  });
 
-  const handleSearch = () => {
-    const filtered = courses.filter(
-      (course) =>
-        course.course_title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.course_code.toString().includes(searchQuery.toLowerCase()) ||
-        course.time.toString().includes(searchQuery.toLowerCase()) ||
-        course.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.section.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        course.days.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-    setFilteredCourses(filtered);
-    setPage(0);
-  };
+  const professorOptions = useMemo(() => {
+    const professors = courses.map((course) => course.professor);
+
+    return uniq(professors);
+  }, []);
+
+  const dayOptions = useMemo(() => {
+    const days = courses.map((course) => course.days);
+
+    return uniq(days).sort();
+  }, []);
+
+  const timeOptions = useMemo(() => {
+    const times = courses.map((course) => course.time);
+
+    return uniq(times).sort();
+  }, []);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -44,48 +56,93 @@ export const Search = () => {
     setPage(0);
   };
 
+  const handleFilterSelect = (key, value) => {
+    setPage(0);
+    setFilter({
+      ...filter,
+      [key]: value,
+    });
+  };
+
+  const handleSearchWord = (e) =>
+    setFilter({ ...filter, keyword: e.target.value });
+
+  const compareTwoString = (a = "", b = "") =>
+    a.toLowerCase() === b.toLowerCase();
+
+  useEffect(() => {
+    let newFilteredCourses = [...courses];
+
+    if (filter.keyword) {
+      newFilteredCourses = newFilteredCourses.filter((course) => {
+        return course.course_title
+          .toLowerCase()
+          .includes(filter.keyword.toLowerCase());
+      });
+    }
+
+    if (filter.professor) {
+      newFilteredCourses = newFilteredCourses.filter((course) =>
+        compareTwoString(course.professor, filter.professor)
+      );
+    }
+
+    if (filter.day) {
+      newFilteredCourses = newFilteredCourses.filter((course) =>
+        compareTwoString(course.days, filter.day)
+      );
+    }
+
+    if (filter.time) {
+      newFilteredCourses = newFilteredCourses.filter((course) =>
+        compareTwoString(course.time, filter.time)
+      );
+    }
+
+    return setFilteredCourses(newFilteredCourses);
+  }, [filter, filteredCourses]);
+
   return (
     <DefaultLayout>
       <Stack p={3} spacing={2}>
         <Card sx={{ p: 1 }}>
-          <TextField
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-            }}
-            sx={{
-              width: {
-                xs: "100%",
-                md: "300px",
-              },
-            }}
-            variant="outlined"
-            onKeyDown={(ev) => {
-              if (ev.key === "Enter") {
-                ev.preventDefault();
-                handleSearch();
-              }
-            }}
-            label="Search Courses"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="search"
-                    onClick={handleSearch}
-                    sx={{
-                      backgroundColor: "#e0e0e0",
-                      height: "40px",
-                      width: "40px",
-                      borderRadius: "5px",
-                    }}
-                  >
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
+          <Grid container spacing={2}>
+            <Grid item xs={3}>
+              <TextField
+                onChange={handleSearchWord}
+                fullWidth
+                variant="outlined"
+                label="Search By Name"
+              />
+            </Grid>
+
+            <Grid item xs={3}>
+              <Autocomplete
+                options={dayOptions}
+                renderInput={(params) => <TextField {...params} label="Day" />}
+                onChange={(_, value) => handleFilterSelect("day", value)}
+                plac
+              />
+            </Grid>
+
+            <Grid item xs={3}>
+              <Autocomplete
+                options={timeOptions}
+                renderInput={(params) => <TextField {...params} label="Time" />}
+                onChange={(_, value) => handleFilterSelect("time", value)}
+              />
+            </Grid>
+
+            <Grid item xs={3}>
+              <Autocomplete
+                options={professorOptions}
+                renderInput={(params) => (
+                  <TextField {...params} label="Professor" />
+                )}
+                onChange={(_, value) => handleFilterSelect("professor", value)}
+              />
+            </Grid>
+          </Grid>
         </Card>
         <Card sx={{ p: 1 }}>
           <Grid container>
@@ -145,7 +202,23 @@ export const Search = () => {
                               color: "#fff",
                             }}
                           >
-                            Days & Time(s)
+                            Professor
+                          </TableCell>
+                          <TableCell
+                            style={{
+                              borderRight: "2px solid #E5E4E2",
+                              color: "#fff",
+                            }}
+                          >
+                            Days
+                          </TableCell>
+                          <TableCell
+                            style={{
+                              borderRight: "2px solid #E5E4E2",
+                              color: "#fff",
+                            }}
+                          >
+                            Times
                           </TableCell>
                           <TableCell
                             style={{
@@ -188,8 +261,26 @@ export const Search = () => {
                           >
                             {course.type}
                           </TableCell>
-                          <TableCell>
-                            {course.days} {course.time}
+                          <TableCell
+                            style={{
+                              borderRight: "2px solid #E5E4E2",
+                            }}
+                          >
+                            {course.professor}
+                          </TableCell>
+                          <TableCell
+                            style={{
+                              borderRight: "2px solid #E5E4E2",
+                            }}
+                          >
+                            {course.days}
+                          </TableCell>
+                          <TableCell
+                            style={{
+                              borderRight: "2px solid #E5E4E2",
+                            }}
+                          >
+                            {course.time}
                           </TableCell>
                           <TableCell>{course.students}</TableCell>
                         </TableRow>

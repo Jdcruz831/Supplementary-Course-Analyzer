@@ -7,6 +7,7 @@ export const courses = [
     days: "TUESDAY/THURSDAY",
     time: "10:30AM - 11:45AM",
     students: 90,
+    professor: "Professor A",
   },
   {
     course_title: "BIO 22",
@@ -16,6 +17,7 @@ export const courses = [
     days: "TUESDAY/THURSDAY",
     time: "12:00PM - 1:15PM",
     students: 220,
+    professor: "Professor B",
   },
   {
     course_title: "BIO 22",
@@ -25,6 +27,7 @@ export const courses = [
     days: "TUESDAY/THURSDAY",
     time: "1:30PM - 2:45PM",
     students: 300,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 22",
@@ -34,6 +37,7 @@ export const courses = [
     days: "TUESDAY/THURSDAY",
     time: "3:00PM - 4:15PM",
     students: 149,
+    professor: "Professor D",
   },
   {
     course_title: "BIO 22",
@@ -43,6 +47,7 @@ export const courses = [
     days: "TUESDAY/THURSDAY",
     time: "4:30PM - 5:45PM",
     students: 352,
+    professor: "Professor A",
   },
   {
     course_title: "BIO 25",
@@ -52,6 +57,7 @@ export const courses = [
     days: "TUESDAY/THURSDAY",
     time: "7:30AM - 8:45AM",
     students: 223,
+    professor: "Professor B",
   },
   {
     course_title: "BIO 25",
@@ -61,6 +67,7 @@ export const courses = [
     days: "TUESDAY",
     time: "9:00AM - 11:50AM",
     students: 104,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 25",
@@ -70,6 +77,7 @@ export const courses = [
     days: "THURSDAY",
     time: "9:00AM - 11:50AM",
     students: 123,
+    professor: "Professor E",
   },
   {
     course_title: "BIO 25",
@@ -79,6 +87,7 @@ export const courses = [
     days: "TUESDAY",
     time: "1:30PM - 5:20PM",
     students: 342,
+    professor: "Professor A",
   },
   {
     course_title: "BIO 25",
@@ -88,6 +97,7 @@ export const courses = [
     days: "THURSDAY",
     time: "1:30PM - 4:20PM",
     students: 112,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 25",
@@ -97,6 +107,7 @@ export const courses = [
     days: "MONDAY",
     time: "4:00PM - 6:50PM",
     students: 164,
+    professor: "Professor E",
   },
   {
     course_title: "BIO 25",
@@ -106,6 +117,7 @@ export const courses = [
     days: "MONDAY/WEDNESDAY FRIDAY",
     time: "11:00AM - 11:50AM",
     students: 175,
+    professor: "Professor B",
   },
   {
     course_title: "BIO 25",
@@ -115,6 +127,7 @@ export const courses = [
     days: "MONDAY",
     time: "1:00PM - 3:50PM",
     students: 156,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 25",
@@ -124,6 +137,7 @@ export const courses = [
     days: "WEDNESDAY",
     time: "1:00PM - 3:50PM",
     students: 104,
+    professor: "Professor E",
   },
   {
     course_title: "BIO 25",
@@ -133,6 +147,7 @@ export const courses = [
     days: "FRIDAY",
     time: "1:00PM - 3:50PM",
     students: 332,
+    professor: "Professor F",
   },
   {
     course_title: "BIO 25",
@@ -142,6 +157,7 @@ export const courses = [
     days: "MONDAY/WEDNESDAY FRIDAY",
     time: "8:00AM - 8:50AM",
     students: 122,
+    professor: "Professor A",
   },
   {
     course_title: "BIO 25",
@@ -151,6 +167,7 @@ export const courses = [
     days: "MONDAY",
     time: "9:00AM - 11:50AM",
     students: 120,
+    professor: "Professor B",
   },
   {
     course_title: "BIO 25",
@@ -160,6 +177,7 @@ export const courses = [
     days: "WEDNESDAY",
     time: "9:00AM - 11:50AM",
     students: 439,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 25",
@@ -169,6 +187,7 @@ export const courses = [
     days: "FRIDAY",
     time: "9:00AM - 11:50AM",
     students: 203,
+    professor: "Professor E",
   },
   {
     course_title: "BIO 25",
@@ -178,6 +197,7 @@ export const courses = [
     days: "TUESDAY/THURSDAY",
     time: "1:30PM - 2:45PM",
     students: 177,
+    professor: "Professor F",
   },
   {
     course_title: "BIO 25",
@@ -187,6 +207,7 @@ export const courses = [
     days: "TUESDAY",
     time: "4:30PM - 7:20PM",
     students: 194,
+    professor: "Professor E",
   },
   {
     course_title: "BIO 25",
@@ -196,6 +217,7 @@ export const courses = [
     days: "WEDNESDAY",
     time: "4:00PM - 6:50PM",
     students: 105,
+    professor: "Professor A",
   },
   {
     course_title: "BIO 25",
@@ -205,6 +227,7 @@ export const courses = [
     days: "THURSDAY",
     time: "4:30PM - 7:20PM",
     students: 104,
+    professor: "Professor B",
   },
   {
     course_title: "BIO 26",
@@ -214,6 +237,7 @@ export const courses = [
     days: "MONDAY/WEDNESDAY",
     time: "7:30AM - 8:45AM",
     students: 102,
+    professor: "Professor B",
   },
   {
     course_title: "BIO 26",
@@ -223,6 +247,7 @@ export const courses = [
     days: "MONDAY",
     time: "9:00AM - 11:50AM",
     students: 123,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 26",
@@ -232,6 +257,7 @@ export const courses = [
     days: "WEDNESDAY",
     time: "9:00AM - 11:50AM",
     students: 244,
+    professor: "Professor D",
   },
   {
     course_title: "BIO 26",
@@ -241,6 +267,7 @@ export const courses = [
     days: "WEDNESDAY",
     time: "1:00PM - 3:50PM",
     students: 102,
+    professor: "Professor D",
   },
   {
     course_title: "BIO 26",
@@ -250,6 +277,7 @@ export const courses = [
     days: "FRIDAY",
     time: "9:00AM - 11:50AM",
     students: 59,
+    professor: "Professor A",
   },
   {
     course_title: "BIO 26",
@@ -259,6 +287,7 @@ export const courses = [
     days: "TUESDAY/THURSDAY",
     time: "12:00PM - 1:15PM",
     students: 82,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 26",
@@ -268,6 +297,7 @@ export const courses = [
     days: "TUESDAY",
     time: "7:30AM - 10:20AM",
     students: 89,
+    professor: "Professor E",
   },
   {
     course_title: "BIO 26",
@@ -277,6 +307,7 @@ export const courses = [
     days: "TUESDAY",
     time: "1:30PM - 4:20PM",
     students: 209,
+    professor: "Professor A",
   },
   {
     course_title: "BIO 26",
@@ -286,6 +317,7 @@ export const courses = [
     days: "TUESDAY",
     time: "4:30PM - 7:20PM",
     students: 220,
+    professor: "Professor B",
   },
   {
     course_title: "BIO 26",
@@ -295,6 +327,7 @@ export const courses = [
     days: "THURSDAY",
     time: "1:30PM - 4:20PM",
     students: 302,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 26",
@@ -304,6 +337,7 @@ export const courses = [
     days: "MONDAY/WEDNESDAY/FRIDAY",
     time: "11:00AM - 11:50AM",
     students: 103,
+    professor: "Professor A",
   },
   {
     course_title: "BIO 26",
@@ -313,6 +347,7 @@ export const courses = [
     days: "MONDAY",
     time: "1:00PM - 3:50PM",
     students: 112,
+    professor: "Professor B",
   },
   {
     course_title: "BIO 26",
@@ -322,6 +357,7 @@ export const courses = [
     days: "TUESDAY",
     time: "10:30AM - 1:20PM",
     students: 103,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 26",
@@ -331,6 +367,7 @@ export const courses = [
     days: "THURSDAY",
     time: "10:30AM - 1:20PM",
     students: 105,
+    professor: "Professor E",
   },
   {
     course_title: "BIO 121",
@@ -340,6 +377,7 @@ export const courses = [
     days: "MONDAY/WEDNESDAY",
     time: "3:00PM - 4:15PM",
     students: 324,
+    professor: "Professor A",
   },
   {
     course_title: "BIO 121",
@@ -349,6 +387,7 @@ export const courses = [
     days: "TUESDAY/THURSDAY",
     time: "10:30AM - 11:45AM",
     students: 177,
+    professor: "Professor B",
   },
   {
     course_title: "BIO 131",
@@ -358,6 +397,7 @@ export const courses = [
     days: "MONDAY/WEDNESDAY",
     time: "7:30AM - 8:45AM",
     students: 325,
+    professor: "Professor C",
   },
   {
     course_title: "BIO 131",
@@ -367,5 +407,6 @@ export const courses = [
     days: "MONDAY",
     time: "9:00AM - 11:50AM",
     students: 265,
+    professor: "Professor D",
   },
 ];
