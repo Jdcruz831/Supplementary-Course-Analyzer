@@ -8,34 +8,44 @@ import SourceDataMainPage from "../Pages/SourceDataPage/SourceDataMainPage";
 import StudentEnrollmentAnalyzerMainPage from "../Pages/StudentEnrollmentAnalyzerPage/StudentEnrollmentAnalyzerMainPage";
 import SupCourseAnalyzerMainPage from "../Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage";
 import LoginMainPage from "../Pages/LoginPage/LoginMainPage";
-import Register from "../Pages/RegistrationPage/register";
+import RegisterMainPage from "./Pages/RegistrationPage/register";
 import About from "../Pages/About/AboutMain";
+import { Search } from "../Pages/Search/search";
+import CourseTimeAnalyzer from "../Pages/CourseTimeAnalyzerPage/CourseTimeAnalyzer";
+
+// route authentication
+import ProtectedRoutes from "./ProtectedRoutes";
+import { AuthProvider } from "./AuthContext";
 
 const RouteProvider = () => {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<HomeMainPage />} />
-        <Route
-          path="/CourseTimeAnalyzer"
-          element={<CourseTimeAnalyzerMainPage />}
-        />
-        <Route path="/Creators" element={<CreatorsMainPage />} />
-        <Route path="/SourceData" element={<SourceDataMainPage />} />
-        <Route
-          path="/StudentEnrollmentAnalyzer"
-          element={<StudentEnrollmentAnalyzerMainPage />}
-        />
-        <Route
-          path="/SupCourseAnalyzer"
-          element={<SupCourseAnalyzerMainPage />}
-        />
-        <Route path="/Login" element={<LoginMainPage />} />
+    <AuthProvider>
+      <HashRouter>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/Register" element={<RegisterMainPage />} />
+          <Route path="/Login" element={<LoginMainPage />} />
 
-        <Route path="/Register" element={<Register />} />
-        <Route path="/About" element={<About />} />
-      </Routes>
-    </HashRouter>
+          {/* Protected Routes */}
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/" element={<HomeMainPage />} />
+            <Route path="/CourseTimeAnalyzer" element={<CourseTimeAnalyzer />} />
+            <Route path="/Creators" element={<CreatorsMainPage />} />
+            <Route path="/SourceData" element={<SourceDataMainPage />} />
+            <Route
+              path="/StudentEnrollmentAnalyzer"
+              element={<StudentEnrollmentAnalyzerMainPage />}
+            />
+            <Route
+              path="/SupCourseAnalyzer"
+              element={<SupCourseAnalyzerMainPage />}
+            />
+            <Route path="/search" element={<Search />} />
+            <Route path="/About" element={<About />} />
+          </Route>
+        </Routes>
+      </HashRouter>
+    </AuthProvider>  
   );
 };
 
