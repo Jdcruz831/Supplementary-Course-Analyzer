@@ -12,12 +12,14 @@ import {
   Drawer,
   useMediaQuery,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Ginkgo from "../../img/ginkgo.jpg";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Link as RouterLink } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
+import { auth } from "../../utils/firebase";
+import { signOut } from "firebase/auth";
 
 const menuOptions = [
   { label: "Home", path: "/" },
@@ -30,8 +32,10 @@ const menuOptions = [
     path: "/StudentEnrollmentAnalyzer",
   },
   { label: "Sup. Course Analyzer", path: "/SupCourseAnalyzer" },
-  { label: "Login", path: "/login" },
+  
 ];
+
+
 
 export const TopNav = () => {
   const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up("lg"));
@@ -52,11 +56,32 @@ export const TopNav = () => {
   };
   const theme = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      console.log("User is logged in:", currentUser);
+      setUser(currentUser);
+    });
+
+    console.log("User is logged out");
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      console.log("Logout button clicked");
+      await signOut(auth); 
+      setUser(null); 
+      console.log("User successfully logged out");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
   return (
     <Stack direction="column">
       <Box
@@ -193,6 +218,21 @@ export const TopNav = () => {
                   </ListItemButton>
                 </ListItem>
               ))}
+              {user && (
+                <ListItem disablePadding>
+                  <ListItemButton
+                    onClick={handleLogout}
+                    sx={{
+                      color: "white",
+                      "&:hover": {
+                        color: theme.palette.secondary.hornet,
+                      },
+                    }}
+                  >
+                    <ListItemText primary="Logout" />
+                  </ListItemButton>
+                  </ListItem>
+              )}
             </List>
           </Box>
         </Drawer>
