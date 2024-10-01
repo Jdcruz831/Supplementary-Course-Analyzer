@@ -31,6 +31,7 @@
   .login-box {
     padding: 20px;
   }
+
   .login-header {
     display: flex;
     align-items: center;
@@ -82,17 +83,24 @@
     border-radius: 5px;
     outline: none;
   }
+
   .error-text {
     text-align: center;
     align-items: center;
     
   }
 
-  .manage-password{
+  .manage-password {
     text-align: center;
     align-items: center;
   }
   
+  .managepassword-error-text {
+    color: red;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
   button {
     width: 100%;
     padding: 10px;

@@ -35,7 +35,27 @@ const Login = () => {
       })
       .catch((error) => {
         // Handle authentication errors
-        const errorMsg = error.message;
+        const errorCode = error.code;
+        let errorMsg = "";
+
+        switch (errorCode) {
+          case "auth/invalid-credential":
+            errorMsg = "Incorrect Email or Password.";
+            break;
+          case "auth/invalid-password":
+            errorMsg = "Please enter a valid password.";
+            break;
+          case "auth/invalid-email":
+            errorMsg = "Please enter a valid email address.";
+            break;
+          case "auth/too-many-requests":
+            errorMsg = `Your account has been temporarily locked due to many failed login attempts. 
+            Please reset your password or try again later.`;
+            break;
+          default: 
+            errorMsg = error.message;
+        }
+
         setErrorMessage(errorMsg);
       });
   };
@@ -78,7 +98,17 @@ const Login = () => {
         setOpenManagePassword(false);
       })
       .catch((error) => {
-        const errorMessage = error.message;
+        const errorCodeManage = error.code;
+        let errorMessage = "";
+
+        switch (errorCodeManage) {
+          case "auth/invalid-email":
+            errorMessage = "Please enter a valid email address."
+            break;
+          default:
+            errorMessage = error.message;
+        }
+
         setErrorResetPassword(errorMessage);
       });
   };
@@ -210,7 +240,7 @@ const Login = () => {
               <DialogTitle>Manage Password</DialogTitle>
               <DialogContent>
                 {errorResetPassword && (
-                  <div className="error-text">{errorResetPassword}</div>
+                  <div className="managepassword-error-text">{errorResetPassword}</div>
                 )}
                 <TextField
                   autoFocus
