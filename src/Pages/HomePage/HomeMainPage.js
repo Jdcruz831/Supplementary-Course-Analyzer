@@ -56,7 +56,6 @@ function HomeMainPage() {
             <Button component="a" href="/#/About" sx={buttonStyle}>
               About Us
             </Button>
-          
           </Stack>
         </Grid>
         
