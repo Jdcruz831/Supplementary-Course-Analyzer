@@ -17,7 +17,7 @@ import {
 import uniq from "lodash/uniq";
 
 import DefaultLayout from "../../components/default/layout";
-import { courses } from "../../courses";
+// import { courses } from "../../courses";
 import { collectionAPI } from "../../routes/collection/collection";
 import { parseTime } from "../../utils/parse-time";
 
@@ -46,7 +46,7 @@ export const Search = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [filter, setFilter] = useState({
     keyword: "",
-    professor: "",
+    instructor: "",
     time: "",
     day: "",
   });
@@ -60,7 +60,7 @@ export const Search = () => {
         .includes(filter.keyword.toLowerCase());
       const professorMatch = course.instructor
         .toLowerCase()
-        .includes(filter.professor.toLowerCase());
+        .includes(filter.instructor.toLowerCase());
       const timeMatch = course.time ? course.time.includes(filter.time) : true;
       const buildingMatch = course.day ? course.day.includes(filter.day) : true;
 
@@ -98,8 +98,6 @@ export const Search = () => {
       [key]: value,
     });
   };
-
-  console.log("r");
 
   const handleSearchWord = (e) =>
     setFilter({ ...filter, keyword: e.target.value });
@@ -290,7 +288,7 @@ export const Search = () => {
               <TablePagination
                 rowsPerPageOptions={[5, 10, 25]}
                 component="div"
-                count={courses.length}
+                count={filteredCourses.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={handleChangePage}
