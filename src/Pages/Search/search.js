@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import {
   Card,
@@ -12,40 +12,75 @@ import {
   TableBody,
   TableCell,
   TableRow,
+  Button,
 } from "@mui/material";
 import uniq from "lodash/uniq";
 
 import DefaultLayout from "../../components/default/layout";
-import { courses } from "../../courses";
+// import { courses } from "../../courses";
+import { collectionAPI } from "../../routes/collection/collection";
+import { parseTime } from "../../utils/parse-time";
+
+const useGetCourses = (params) => {
+  const [courses, setCourses] = useState([]);
+
+  const handleGetCourses = useCallback(async () => {
+    const retrievedCourses = await collectionAPI.getCollection("courses");
+
+    setCourses(retrievedCourses);
+  }, []);
+
+  useEffect(() => {
+    handleGetCourses();
+  }, []);
+
+  return courses;
+};
 
 export const Search = () => {
-  const [filteredCourses, setFilteredCourses] = useState(courses);
+  const allCourses = useGetCourses();
+  // Get all courses from the custom hook
+  const [filteredCourses, setFilteredCourses] = useState(allCourses);
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [filter, setFilter] = useState({
     keyword: "",
-    professor: "",
+    instructor: "",
     time: "",
     day: "",
   });
 
+  console.log(allCourses);
+
+  useEffect(() => {
+    const filtered = allCourses.filter((course) => {
+      const keywordMatch = course.course_name
+        .toLowerCase()
+        .includes(filter.keyword.toLowerCase());
+      const professorMatch = course.instructor
+        .toLowerCase()
+        .includes(filter.instructor.toLowerCase());
+      const timeMatch = course.time ? course.time.includes(filter.time) : true;
+      const buildingMatch = course.day ? course.day.includes(filter.day) : true;
+
+      return keywordMatch && professorMatch && timeMatch && buildingMatch;
+    });
+
+    setFilteredCourses(filtered);
+  }, [allCourses, filter]);
+
   const professorOptions = useMemo(() => {
-    const professors = courses.map((course) => course.professor);
+    const professors = allCourses.map((course) => course.instructor);
 
     return uniq(professors);
-  }, []);
+  }, [allCourses]);
 
   const dayOptions = useMemo(() => {
-    const days = courses.map((course) => course.days);
+    const days = allCourses.map((course) => course.days);
 
     return uniq(days).sort();
-  }, []);
-
-  const timeOptions = useMemo(() => {
-    const times = courses.map((course) => course.time);
-
-    return uniq(times).sort();
-  }, []);
+  }, [allCourses]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -70,38 +105,6 @@ export const Search = () => {
   const compareTwoString = (a = "", b = "") =>
     a.toLowerCase() === b.toLowerCase();
 
-  useEffect(() => {
-    let newFilteredCourses = [...courses];
-
-    if (filter.keyword) {
-      newFilteredCourses = newFilteredCourses.filter((course) => {
-        return course.course_title
-          .toLowerCase()
-          .includes(filter.keyword.toLowerCase());
-      });
-    }
-
-    if (filter.professor) {
-      newFilteredCourses = newFilteredCourses.filter((course) =>
-        compareTwoString(course.professor, filter.professor)
-      );
-    }
-
-    if (filter.day) {
-      newFilteredCourses = newFilteredCourses.filter((course) =>
-        compareTwoString(course.days, filter.day)
-      );
-    }
-
-    if (filter.time) {
-      newFilteredCourses = newFilteredCourses.filter((course) =>
-        compareTwoString(course.time, filter.time)
-      );
-    }
-
-    return setFilteredCourses(newFilteredCourses);
-  }, [filter, filteredCourses]);
-
   return (
     <DefaultLayout>
       <Stack p={3} spacing={2}>
@@ -122,14 +125,6 @@ export const Search = () => {
                 renderInput={(params) => <TextField {...params} label="Day" />}
                 onChange={(_, value) => handleFilterSelect("day", value)}
                 plac
-              />
-            </Grid>
-
-            <Grid item xs={3}>
-              <Autocomplete
-                options={timeOptions}
-                renderInput={(params) => <TextField {...params} label="Time" />}
-                onChange={(_, value) => handleFilterSelect("time", value)}
               />
             </Grid>
 
@@ -170,7 +165,7 @@ export const Search = () => {
                               color: "#fff",
                             }}
                           >
-                            Course Code
+                            Building
                           </TableCell>
                           <TableCell
                             style={{
@@ -178,7 +173,7 @@ export const Search = () => {
                               color: "#fff",
                             }}
                           >
-                            Name
+                            Course Name
                           </TableCell>
                           <TableCell
                             style={{
@@ -194,7 +189,15 @@ export const Search = () => {
                               color: "#fff",
                             }}
                           >
-                            Type
+                            Start Time
+                          </TableCell>
+                          <TableCell
+                            style={{
+                              borderRight: "2px solid #E5E4E2",
+                              color: "#fff",
+                            }}
+                          >
+                            End Time
                           </TableCell>
                           <TableCell
                             style={{
@@ -218,15 +221,7 @@ export const Search = () => {
                               color: "#fff",
                             }}
                           >
-                            Times
-                          </TableCell>
-                          <TableCell
-                            style={{
-                              borderRight: "2px solid #E5E4E2",
-                              color: "#fff",
-                            }}
-                          >
-                            Student(s) Enrolled
+                            Seats (available)
                           </TableCell>
                         </TableRow>
                         <TableRow
@@ -238,14 +233,14 @@ export const Search = () => {
                               borderRight: "2px solid #E5E4E2",
                             }}
                           >
-                            {course.course_code}
+                            {course.building}
                           </TableCell>
                           <TableCell
                             style={{
                               borderRight: "2px solid #E5E4E2",
                             }}
                           >
-                            {course.course_title}
+                            {course.course_name}
                           </TableCell>
                           <TableCell
                             style={{
@@ -259,14 +254,21 @@ export const Search = () => {
                               borderRight: "2px solid #E5E4E2",
                             }}
                           >
-                            {course.type}
+                            {parseTime(course.start_time)}
                           </TableCell>
                           <TableCell
                             style={{
                               borderRight: "2px solid #E5E4E2",
                             }}
                           >
-                            {course.professor}
+                            {parseTime(course.end_time)}
+                          </TableCell>
+                          <TableCell
+                            style={{
+                              borderRight: "2px solid #E5E4E2",
+                            }}
+                          >
+                            {course.instructor}
                           </TableCell>
                           <TableCell
                             style={{
@@ -275,14 +277,7 @@ export const Search = () => {
                           >
                             {course.days}
                           </TableCell>
-                          <TableCell
-                            style={{
-                              borderRight: "2px solid #E5E4E2",
-                            }}
-                          >
-                            {course.time}
-                          </TableCell>
-                          <TableCell>{course.students}</TableCell>
+                          <TableCell>{course.seats}</TableCell>
                         </TableRow>
                       </React.Fragment>
                     ))}
