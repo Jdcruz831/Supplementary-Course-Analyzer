@@ -209,8 +209,8 @@ const Login = () => {
           <Button
             fullWidth
             sx={{ backgroundColor: '#0FA153', color: 'white', mb: 2, 
-              padding: '8px 16px', // Adjusted padding to make button smaller
-            width: '55%', // Adjusted width to reduce button size
+              padding: '8px 16px', 
+            width: '55%', 
             fontSize: '1rem',
             ml:4,
             }}
@@ -225,8 +225,8 @@ const Login = () => {
             navigate('/Register'); }}
             fullWidth
             sx={{ backgroundColor: '#0FA153', color: 'white', mb: 2, 
-              padding: '8px 16px', // Adjusted padding to make button smaller
-            width: '55%', // Adjusted width to reduce button size
+              padding: '8px 16px', 
+            width: '55%', 
             fontSize: '1rem',
             ml:4,
             }}
