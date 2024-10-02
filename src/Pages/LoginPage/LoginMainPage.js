@@ -1,19 +1,17 @@
 import React, { useState } from "react";
-import "./Login.css";
 import backgroundImage from "../../img/background.jpg";
 import loginIcon from "../../img/login-icon.png";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid, TextField } from '@mui/material';
-
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Grid, TextField, Box } from '@mui/material';
 
 const Login = () => {
-  const [email, setEmail] = useState(""); 
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginClicked, setLoginClicked] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(""); 
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -28,17 +26,13 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        console.log("User signed in:", user);
         navigate("/");
       })
       .catch((error) => {
-        // Handle authentication errors
-        const errorCode = error.code;
         let errorMsg = "";
 
-        switch (errorCode) {
+        switch (error.code) {
           case "auth/invalid-credential":
             errorMsg = "Incorrect Email or Password.";
             break;
@@ -49,10 +43,10 @@ const Login = () => {
             errorMsg = "Please enter a valid email address.";
             break;
           case "auth/too-many-requests":
-            errorMsg = `Your account has been temporarily locked due to many failed login attempts. 
+            errorMsg = `Your account has been temporarily locked due to too many failed login attempts. 
             Please reset your password or try again later.`;
             break;
-          default: 
+          default:
             errorMsg = error.message;
         }
 
@@ -65,16 +59,9 @@ const Login = () => {
   };
 
   const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  // Manage Password
   const [openManagePassword, setOpenManagePassword] = useState(false);
   const [emailForReset, setEmailForReset] = useState('');
   const [errorResetPassword, setErrorResetPassword] = useState('');
@@ -85,25 +72,21 @@ const Login = () => {
     setOpenManagePassword(true);
   };
 
-  const handleManagePasswordClose = () => {
-    setOpenManagePassword(false);
-  };
+  const handleManagePasswordClose = () => setOpenManagePassword(false);
 
   const handleSendPasswordResetEmail = () => {
     const auth = getAuth();
     sendPasswordResetEmail(auth, emailForReset)
       .then(() => {
-        // Password reset email sent!
         alert('Password reset email sent!');
         setOpenManagePassword(false);
       })
       .catch((error) => {
-        const errorCodeManage = error.code;
         let errorMessage = "";
 
-        switch (errorCodeManage) {
+        switch (error.code) {
           case "auth/invalid-email":
-            errorMessage = "Please enter a valid email address."
+            errorMessage = "Please enter a valid email address.";
             break;
           default:
             errorMessage = error.message;
@@ -114,159 +97,200 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <div
-        className="background-image"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      ></div>
-      <div className="login-form">
-        <div className="login-header">
-          <img src={loginIcon} alt="Login Icon" className="login-icon" />
-        </div>
+    <Box
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        position: 'relative',
+      }}
+    >
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(5px)',
+          zIndex: -1,
+        }}
+      />
+      <Box
+        sx={{
+          width: '75%',
+          maxWidth: 770,
+          backgroundColor: 'white',
+          borderRadius: 2,
+          boxShadow: 3,
+          background: 'linear-gradient(to bottom, #17503e 70%, #001E13 100%)',
+          opacity: 0.9,
+          textAlign: 'center',
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#CBB778',
+            width: '100%',
+            borderTopRightRadius: 4,
+            borderTopLeftRadius: 4,
+            py: 1,
+          }}
+        >
+          <img src={loginIcon} alt="Login Icon" style={{ width: '50%', height: 'auto' }} />
+        </Box>
 
-        <div className="login-box">
-          {/* Error message */}
+        <Box sx={{ p: 9 , width:'75%'}}>
           {errorMessage && (
-            <div className="error-text">{errorMessage}</div>
+            <Box sx={{ color: 'white', textAlign: 'center', mb: 2 }}>{errorMessage}</Box>
           )}
 
-          <div className="input-group">
-            <div className="input-container">
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                style={{
-                  borderColor: loginClicked && !email && "red",
-                  borderWidth: loginClicked && !email && "2px",
-                }}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="input-container">
-              <label htmlFor="password">Password</label>
-              <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                style={{
-                  borderColor: loginClicked && !password && "red",
-                  borderWidth: loginClicked && !password && "2px",
-                }}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button
-                className="toggle-password-button"
-                onClick={togglePasswordVisibility}
-              >
-                {showPassword ? <VisibilityOff /> : <Visibility />}
-              </button>
-            </div>
-          </div>
+          <Box sx={{ mb: 2 }}>
+            <Grid container alignItems="center">
+              <Grid item xs={3}>
+                <label style={{ color: 'white', fontSize: 15, fontWeight:'medium'}}>Email</label>
+              </Grid>
+              <Grid item xs={9}>
+                <TextField
+                  fullWidth
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  error={loginClicked && !email}
+                  helperText={loginClicked && !email ? 'Please enter your email' : ''}
+                  InputProps={{
+                    sx: { backgroundColor: 'white', width: '75%' }
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </Box>
 
-          <div className="input-container">
-            <button
-              style={{ background: "#0FA153" }}
-              onClick={handleLogin}
-            >
-              Login
-            </button>
-          </div>
-          <div>
-            <button style={{ background: "#0FA153" }} onClick={handleOpen}>
-              Create New Account
-            </button>
+          <Box sx={{ mb: 2 }}>
+            <Grid container alignItems="center">
+              <Grid item xs={3}>
+                <label style={{ color: 'white', fontSize: 15,fontWeight:'medium' }}>Password</label>
+              </Grid>
+              <Grid item xs={9}>
+                <Box sx={{ position: 'relative' }}>
+                  <TextField
+                    fullWidth
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    error={loginClicked && !password}
+                    helperText={loginClicked && !password ? 'Please enter your password' : ''}
+                    InputProps={{
+                      sx: { backgroundColor: 'white', width: '75%' }
+                    }}
+                  />
+                  <Button
+                    onClick={togglePasswordVisibility}
+                    sx={{
+                      position: 'absolute',
+                      right: 110,
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                    }}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+          </Box>
 
-            <div className="manage-password" onClick={handleManagePasswordOpen}>
-              Manage Password
-            </div>
+          <Button
+            fullWidth
+            sx={{ backgroundColor: '#0FA153', color: 'white', mb: 2, 
+              padding: '8px 16px', // Adjusted padding to make button smaller
+            width: '55%', // Adjusted width to reduce button size
+            fontSize: '1rem',
+            ml:4,
+            }}
+            onClick={handleLogin}
+          >
+            Login
+          </Button>
 
-            <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Create Account
-        </DialogTitle>
-        <DialogContent>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
+          <Button
+            onClick={() => {
+            
+            navigate('/Register'); }}
+            fullWidth
+            sx={{ backgroundColor: '#0FA153', color: 'white', mb: 2, 
+              padding: '8px 16px', // Adjusted padding to make button smaller
+            width: '55%', // Adjusted width to reduce button size
+            fontSize: '1rem',
+            ml:4,
+            }}
+          >
+            Create New Account
+          </Button>
+
+          <Box sx={{ textAlign: 'center', cursor: 'pointer', color: '#007bff', '&:hover': { textDecoration: 'underline' } }} onClick={handleManagePasswordOpen}>
+            Manage Password
+          </Box>
+          {/* Create Account Dialog 
+          <Dialog open={open} onClose={handleClose}>
+            <DialogTitle>Create Account</DialogTitle>
+            <DialogContent>
+              /* <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <TextField autoFocus margin="dense" label="First Name" type="text" fullWidth />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField margin="dense" label="Last Name" type="text" fullWidth />
+                </Grid>
+              </Grid>
+              <TextField margin="dense" label="Email" type="email" fullWidth />
+              <TextField margin="dense" label="Password" type="password" fullWidth />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} sx={{ backgroundColor: '#0FA153', color: 'white' }}>
+                Submit
+              </Button>
+              <Button onClick={handleClose} sx={{ backgroundColor: '#0FA153', color: 'white' }}>
+                Cancel
+              </Button>
+            </DialogActions>
+          </Dialog> */}
+
+          {/* Manage Password Dialog */}
+          <Dialog open={openManagePassword} onClose={handleManagePasswordClose}>
+            <DialogTitle>Manage Password</DialogTitle>
+            <DialogContent>
+              {errorResetPassword && (
+                <Box sx={{ color: 'red', textAlign: 'center', mb: 2 }}>{errorResetPassword}</Box>
+              )}
               <TextField
                 autoFocus
                 margin="dense"
-                id="First Name"
-                label="First Name"
-                type="text"
+                label="Email Address"
+                type="email"
                 fullWidth
-                variant="outlined"
+                value={emailForReset}
+                onChange={(e) => setEmailForReset(e.target.value)}
               />
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                margin="dense"
-                id="Last Name"
-                label="Last Name"
-                type="text"
-                fullWidth
-                variant="outlined"
-              />
-            </Grid>
-          </Grid>
-          <TextField
-            margin="dense"
-            id="Email"
-            label="Email"
-            type="email"
-            fullWidth
-            variant="outlined"
-          />
-          <TextField
-            margin="dense"
-            id="password"
-            label="Password"
-            type="password"
-            fullWidth
-            variant="outlined"
-          />
-        </DialogContent>
+            </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose} style={{ background: "#0FA153" }}>
+              <Button onClick={handleSendPasswordResetEmail} sx={{ backgroundColor: '#0FA153', color: 'white' }}>
                 Submit
               </Button>
-              <Button onClick={handleClose} style={{ background: "#0FA153" }}>
-                X
+              <Button onClick={handleManagePasswordClose} sx={{ backgroundColor: '#0FA153', color: 'white' }}>
+                Cancel
               </Button>
             </DialogActions>
           </Dialog>
-
-            {/* Manage Password Dialog */}
-            <Dialog open={openManagePassword} onClose={handleManagePasswordClose}>
-              <DialogTitle>Manage Password</DialogTitle>
-              <DialogContent>
-                {errorResetPassword && (
-                  <div className="managepassword-error-text">{errorResetPassword}</div>
-                )}
-                <TextField
-                  autoFocus
-                  margin="dense"
-                  id="emailForReset"
-                  label="Email Address"
-                  type="email"
-                  fullWidth
-                  variant="outlined"
-                  value={emailForReset}
-                  onChange={(e) => setEmailForReset(e.target.value)}
-                />
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={handleSendPasswordResetEmail} style={{ background: "#0FA153" }}>
-                  Submit
-                </Button>
-                <Button onClick={handleManagePasswordClose} style={{ background: "#0FA153" }}>
-                  X
-                </Button>
-              </DialogActions>
-            </Dialog>
-          </div>
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
