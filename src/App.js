@@ -14,6 +14,7 @@ import LoginMainPage from "./Pages/LoginPage/LoginMainPage";
 import About from "./Pages/About/About";
 import RegisterMainPage from "./Pages/RegistrationPage/RegisterMainPage";
 import { Search } from "./Pages/Search/search";
+import AdminLogin from "./Pages/AdminLogin/AdminLoginPage";
 
 function App() {
   return (
@@ -39,7 +40,8 @@ function App() {
           <Route path="/Login" element={<LoginMainPage />} />
           <Route path="/About" element={<About />} />
           <Route path="/Register" element={<RegisterMainPage />} />
-        </Routes>
+          <Route path="AdminLogin" element={<AdminLogin/>}/>
+         </Routes>
       </HashRouter>
     </div>
   );
