@@ -49,7 +49,6 @@ function App() {
                 element={<SupCourseAnalyzerMainPage />}
               />
               <Route path="/search" element={<Search />} />
-              <Route path="/About" element={<About />} />
             </Route>
           </Routes>
         </HashRouter>
