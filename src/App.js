@@ -21,43 +21,10 @@ import app from "./utils/firebase";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
 import { AuthProvider } from "./utils/AuthContext";
 
-import { useState } from "react";
-import axios from "axios";
-import { Button } from "@mui/material";
-
 function App() {
-  const [url, setUrl] = useState(
-    "https://www.csus.edu/class-schedule/fall-2024/MATH"
-  );
-
-  const headers =
-    "Section, Seats, Days, Instructor, StartTime, EndTime, Building";
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchData = async () => {
-    setIsLoading(true);
-    try {
-      const result = await axios(
-        `http://localhost:5000/scrape?url=${encodeURIComponent(
-          url
-        )}&headers=${headers}`
-      );
-      setData(result.data);
-
-      console.log(result);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setData([]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <AuthProvider>
       <div>
-        <Button onClick={fetchData}>tets</Button>
         <HashRouter>
           <Routes>
             {/* Public Routes */}
