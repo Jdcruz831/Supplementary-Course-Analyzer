@@ -1,4 +1,5 @@
 import {
+  Box,
   Card,
   Grid,
   IconButton,
@@ -7,8 +8,10 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableHead,
   TablePagination,
   TableRow,
+  TableSortLabel,
   TextField,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -20,12 +23,48 @@ export const ListView = ({ data }) => {
   const [filteredTimeSlots, setFilteredTimeSlots] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [orderBy, setOrderBy] = useState("days");
+  const [orderType, setOrderType] = useState("desc");
+
+  const sortCourses = (courses, criteria, order = "asc") => {
+    const compareFunction = (a, b) => {
+      let comparison = 0;
+
+      switch (criteria) {
+        case "days":
+          comparison = a.days.localeCompare(b.days);
+          break;
+        case "time":
+          const [startA] = a.time
+            .split(" - ")
+            .map((time) => new Date(`1970-01-01T${time}`));
+          const [startB] = b.time
+            .split(" - ")
+            .map((time) => new Date(`1970-01-01T${time}`));
+          comparison = startA - startB; // Sorting by start time
+          break;
+        case "students":
+          comparison = a.students - b.students;
+          break;
+        default:
+          return 0; // No sorting
+      }
+
+      return order === "asc" ? comparison : -comparison; // Reverse for DESC
+    };
+
+    return [...courses].sort(compareFunction);
+  };
 
   useEffect(() => {
+    let transformedData = [...data];
+
+    transformedData = sortCourses(transformedData, orderBy, orderType);
+
     const analyzeCourses = () => {
       const slots = {};
 
-      data.forEach((course) => {
+      transformedData.forEach((course) => {
         const { days, time, students } = course;
         const key = `${days} ${time}`;
 
@@ -43,7 +82,7 @@ export const ListView = ({ data }) => {
     };
 
     analyzeCourses();
-  }, [data]);
+  }, [data, orderBy, orderType]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -62,6 +101,13 @@ export const ListView = ({ data }) => {
     );
     setFilteredTimeSlots(filtered);
     setPage(0);
+  };
+
+  const handleSort = (property) => (event) => {
+    const isAsc = orderBy === property && orderType === "asc";
+
+    setOrderBy(property);
+    setOrderType(isAsc ? "desc" : "asc");
   };
 
   return (
@@ -107,47 +153,76 @@ export const ListView = ({ data }) => {
       <Card sx={{ p: 1 }}>
         <Grid container>
           <Table>
+            <TableHead>
+              <TableRow
+                style={{
+                  backgroundColor: "#333333",
+                }}
+              >
+                <TableCell
+                  style={{
+                    borderRight: "2px solid #E5E4E2",
+                    color: "#fff",
+                  }}
+                >
+                  <TableSortLabel
+                    active={orderBy === "days"}
+                    direction={orderBy === "days" ? orderType : "asc"}
+                    onClick={handleSort("days")}
+                    style={{ color: "#fff" }}
+                    sx={{
+                      "& .MuiTableSortLabel-icon": {
+                        color: "white !important",
+                        fontSize: "12px",
+                      },
+                    }}
+                  >
+                    Day(s)
+                  </TableSortLabel>
+                </TableCell>
+                <TableCell
+                  style={{
+                    borderRight: "2px solid #E5E4E2",
+                    color: "#fff",
+                  }}
+                >
+                  Time(s)
+                </TableCell>
+                <TableCell
+                  style={{
+                    borderRight: "2px solid #E5E4E2",
+                    color: "#fff",
+                  }}
+                >
+                  <TableSortLabel
+                    active={orderBy === "students"}
+                    direction={orderBy === "students" ? orderType : "asc"}
+                    onClick={handleSort("students")}
+                    style={{ color: "#fff" }}
+                    sx={{
+                      "& .MuiTableSortLabel-icon": {
+                        color: "white !important",
+                        fontSize: "12px",
+                      },
+                    }}
+                  >
+                    # of Students In Class
+                  </TableSortLabel>
+                </TableCell>
+              </TableRow>
+            </TableHead>
             <TableBody>
               {filteredTimeSlots
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((slot, index) => (
                   <React.Fragment key={index}>
-                    <TableRow style={{ height: "20px" }}>
+                    <TableRow style={{ height: "10px" }}>
                       <TableCell
                         colSpan={4}
                         style={{ border: "none", padding: 0 }}
                       ></TableCell>
                     </TableRow>
-                    <TableRow
-                      style={{
-                        backgroundColor: "#333333",
-                      }}
-                    >
-                      <TableCell
-                        style={{
-                          borderRight: "2px solid #E5E4E2",
-                          color: "#fff",
-                        }}
-                      >
-                        Day(s)
-                      </TableCell>
-                      <TableCell
-                        style={{
-                          borderRight: "2px solid #E5E4E2",
-                          color: "#fff",
-                        }}
-                      >
-                        Time(s)
-                      </TableCell>
-                      <TableCell
-                        style={{
-                          borderRight: "2px solid #E5E4E2",
-                          color: "#fff",
-                        }}
-                      >
-                        # of Students In Class
-                      </TableCell>
-                    </TableRow>
+
                     <TableRow
                       key={index}
                       style={{ backgroundColor: "#eae9e8" }}
