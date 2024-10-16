@@ -66,14 +66,7 @@ JD Cruz\
 David Chatla\
 Ian Charamuga
 
-<<<<<<< HEAD
-In the project directory, you can run:
-## ER Diagram
-
-![ER Diagram](erd-diagram.png)
-=======
 ## Installation
->>>>>>> upstream/main
 
 npm install\
 npm start
