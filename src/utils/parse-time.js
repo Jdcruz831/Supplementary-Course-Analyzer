@@ -1,4 +1,6 @@
 export const parseTime = (timeString) => {
+  if (!timeString) return "";
+
   const timeRegex = /^(\d{2})(\d{2})(AM|PM)$/;
   const match = timeString.match(timeRegex);
 
