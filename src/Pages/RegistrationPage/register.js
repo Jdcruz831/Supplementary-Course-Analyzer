@@ -178,6 +178,7 @@ const Register = () => {
                 }}
                 error={!passwordsMatch}
                 helperText={!passwordsMatch && "Passwords Do Not Match"}
+                name="confirm_password"
               />
             </Grid>
           </Grid>
