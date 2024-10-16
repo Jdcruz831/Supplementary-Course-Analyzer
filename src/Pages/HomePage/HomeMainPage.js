@@ -1,80 +1,93 @@
-import React from 'react';
-import Button from '@mui/material/Button';
-import Ginkgo from './img/ginkgo.jpg';
-import { Typography } from '@mui/material';
+import React from "react";
+import Button from "@mui/material/Button";
+import { Grid, Stack, Typography } from "@mui/material";
+import DefaultLayout from "../../components/default/layout";
 
 function HomeMainPage() {
+  const buttonStyle = {
+    p: 2,
+    justifyContent: "left",
+    textTransform: "none",
+    '&:hover': {
+      backgroundColor: 'rgba(0, 100, 0, 0.7)', // Dark green on hover
+    },
+    fontWeight: 'medium',
+    fontSize:"1.2em",
+    boxShadow: "inset 0 -3px 0 rgba(0,0,0,0.2)",
+    bgcolor: "#0c3a2b", // Dark background for buttons
+    color: "white", // Text color
+    width: '100%',
+  };
+
   return (
-    <div className="App">
-        
-        
-    
-        <Button
-            href="/#/CourseTimeAnalyzer"
-            variant="contained"
-            sx={{  
-              backgroundColor: '#486b7a', color: 'white', '&:hover': {backgroundColor: '#124459',} }}
-          >
-          Course Time Analyzer 
-          </Button>
-
-          <Button
-            href="/#/Creators"
-            variant="contained"
-            sx={{  
-              backgroundColor: '#486b7a', color: 'white', '&:hover': {backgroundColor: '#124459',} }}
-          >
-          Creators
-          </Button>
-
-          <Button
-            href="/#/SourceData"
-            variant="contained"
-            sx={{  
-              backgroundColor: '#486b7a', color: 'white', '&:hover': {backgroundColor: '#124459',} }}
-          >
-          SourceData 
-          </Button>
-
-          <Button
-            href="/#/StudentEnrolmentAnalyzer"
-            variant="contained"
-            sx={{  
-              backgroundColor: '#486b7a', color: 'white', '&:hover': {backgroundColor: '#124459',} }}
-          >
-         Student Enrolment Analyzer
-          </Button>
-
-          <Button
-            href="/#/SupCourseAnalyzer"
-            variant="contained"
-            sx={{  
-              backgroundColor: '#486b7a', color: 'white', '&:hover': {backgroundColor: '#124459',} }}
-          >
-          Sup Course Analyzer 
-          </Button>
-
-
-
-          <div style={{ width: '100vw', marginTop: '5vw', height: '15vw', position: 'relative' }}>
-      <img src={Ginkgo} alt="Ginkgo" style={{ width: '100%', height: '15vw', objectFit: 'cover' }} /> 
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'linear-gradient(to right, #043927, rgba(255, 255, 255, 0))' }}></div>
-        <div style={{display: 'flex', flexDirection: 'column',  position: 'absolute', top: '4vw', }}> 
-        <Typography variant="h4"  align="left" fontFamily= 'BlinkMacSystemFont'style={{color: 'rgba(255, 255, 255, 1)',textShadow: 'black 2px 2px' }}>
-        Supplementary <br/> Course Analyzer
+    <DefaultLayout>
+      <Grid
+        container
+        sx={{
+          flexDirection: {
+            xs: "column",
+            md: "row",
+            background:'#D8D2BA',
+          },
+        }}
+      >
+        <Grid item md={6} sx={{ p: 8 }} container>
+          <Stack direction="column" spacing={0.5}>
+            <Typography variant="h6" fontWeight="bold" bgcolor='#E6DF79' p={2} borderRadius={1} textAlign="left">
+              Access Analyzer
             </Typography>
-            <Typography variant="h5"  align="left" fontFamily= 'BlinkMacSystemFont'style={{ color: 'rgba(196, 181, 129, 1)',textShadow: 'black 2px 2px' }}>
-        Sacramento State
+            <Button component="a" href="/#/search" sx={buttonStyle}>
+              Search Courses
+            </Button>
+            <Button component="a" href="/#/StudentEnrollmentAnalyzer" sx={buttonStyle}>
+              Student Enrollment Analyzer
+            </Button>
+            <Button component="a" href="/#/CourseTimeAnalyzer" sx={buttonStyle}>
+              Course Time Analyzer
+            </Button>
+            <Typography variant="h6" fontWeight="bold" bgcolor='#E6DF79' p={2} borderRadius={1} textAlign="left">
+              About Analyzer
             </Typography>
-            </div>
-    </div>
-  
-
-  <h1><span>HomeMainPage</span></h1>
-
-    </div>
-
+            <Button component="a" href="/#/Creators" sx={buttonStyle}>
+              Creators
+            </Button>
+            <Button component="a" href="/#/SourceData" sx={buttonStyle}>
+              Source Data
+            </Button>
+          </Stack>
+        </Grid>
+        <Grid
+          item
+          md={6}
+          sx={{
+            bgcolor: (theme) => theme.palette.primary.main,
+            minHeight: "750px",
+            p: 7,
+          }}
+        >
+          <Stack spacing={3}>
+            <Typography variant="h3" sx={{ fontSize: "3.0em", fontWeight:'medium',color: '#E6DF79' }}>
+              About Our Course Analyzer
+            </Typography>
+            <Typography variant="body1" sx={{ color: "white", fontSize: "1.6em" }}>
+              The CSUS PAL program aims to support students in challenging STEM courses by
+            offering supplementary classes led by former students. These classes, held in person, require
+            campus classrooms that do not conflict with core STEM courses. However, identifying suitable
+            times and classrooms poses a challenge due to the lack of software to analyze scheduling data for
+            STEM courses.
+          </Typography>
+          <Typography variant="body1" sx={{ color: "white", fontSize: "1.6em" }}>
+            The Supplementary Course Analyzer aims to solve this problem by providing a website that will analyze course times and 
+            determine optimal times for supplementary courses, while minimizing interference with major courses. We aim to make PAL courses 
+            more accessible to students and help the PAL program accomplish their goal of helping students learn.
+            </Typography>
+            {/* ...possibly more content... */}
+          </Stack>
+        </Grid>
+      </Grid>
+    </DefaultLayout>
   );
 }
 
 export default HomeMainPage;
+

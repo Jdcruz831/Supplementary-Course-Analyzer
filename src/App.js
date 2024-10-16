@@ -1,39 +1,59 @@
-import './App.css';
-import { ThemeProvider } from '@emotion/react';
-import { HashRouter, Route, Routes } from 'react-router-dom';
-import Banner from './ProjectWideReusables/Banner/banner';
+import "./App.css";
+import { ThemeProvider } from "@emotion/react";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import Banner from "./ProjectWideReusables/Banner/banner";
 
 //imports from diffrent files
-import HomeMainPage from './Pages/HomePage/HomeMainPage' 
-import CourseTimeAnalyzerMainPage from './Pages/CourseTimeAnalyzerPage/CourseTimeAnalyzerMainPage' 
-import CreatorsMainPage from './Pages/CreatorsPage/CreatorsMainPage' 
-import SourceDataMainPage from './Pages/SourceDataPage/SourceDataMainPage' 
-import StudentEnrolmentAnalyzerMainPage from './Pages/StudentEnrolmentAnalyzerPage/StudentEnrolmentAnalyzerMainPage' 
-import SupCourseAnalyzerMainPage from './Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage' 
-import LoginMainPage from './Pages/LoginPage/LoginMainPage';
-import AboutMainPage from './Pages/AboutPage/AboutMainPage';
-import RegisterMainPage from './Pages/RegistrationPage/RegisterMainPage';
+import HomeMainPage from "./Pages/HomePage/HomeMainPage";
+import CourseTimeAnalyzer from "./Pages/CourseTimeAnalyzerPage/CourseTimeAnalyzer";
+import CreatorsMainPage from "./Pages/CreatorsPage/CreatorsMainPage";
+import SourceDataMainPage from "./Pages/SourceDataPage/SourceDataMainPage";
+import StudentEnrollmentAnalyzerMainPage from "./Pages/StudentEnrollmentAnalyzerPage/StudentEnrollmentAnalyzerMainPage";
+import SupCourseAnalyzerMainPage from "./Pages/SupCourseAnalyzer/SupCourseAnalyzerMainPage";
+import LoginMainPage from "./Pages/LoginPage/LoginMainPage";
+import About from "./Pages/About/About";
+// import RegisterMainPage from "./Pages/RegistrationPage/RegisterMainPage";
+import RegisterMainPage from "./Pages/RegistrationPage/register";
+import { Search } from "./Pages/Search/search";
+import app from "./utils/firebase";
+
+//route authentication
+import ProtectedRoutes from "./utils/ProtectedRoutes";
+import { AuthProvider } from "./utils/AuthContext";
 
 function App() {
   return (
-     <div>
-      
-      <HashRouter>
-      <Routes>
-        <Route path="/" element={<HomeMainPage />} />
-        <Route path="/CourseTimeAnalyzer" element={<CourseTimeAnalyzerMainPage />} />
-        <Route path="/Creators" element={<CreatorsMainPage />} />
-        <Route path="/SourceData" element={<SourceDataMainPage />} />
-        <Route path="/StudentEnrolmentAnalyzer" element={<StudentEnrolmentAnalyzerMainPage />} />
-        <Route path="/SupCourseAnalyzer" element={<SupCourseAnalyzerMainPage />} />
-        <Route path="/Login" element={<LoginMainPage />} />
-        <Route path="/About" element={<AboutMainPage />} />
-        <Route path="/Register" element={<RegisterMainPage />} />
+    <AuthProvider>
+      <div>
+        <HashRouter>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/Register" element={<RegisterMainPage />} />
+            <Route path="/Login" element={<LoginMainPage />} />
 
-      </Routes>
-    </HashRouter>
-
-    </div>
+            {/* Protected Routes */}
+            <Route element={<ProtectedRoutes />}>
+              <Route path="/" element={<HomeMainPage />} />
+              <Route
+                path="/CourseTimeAnalyzer"
+                element={<CourseTimeAnalyzer />}
+              />
+              <Route path="/Creators" element={<CreatorsMainPage />} />
+              <Route path="/SourceData" element={<SourceDataMainPage />} />
+              <Route
+                path="/StudentEnrollmentAnalyzer"
+                element={<StudentEnrollmentAnalyzerMainPage />}
+              />
+              <Route
+                path="/SupCourseAnalyzer"
+                element={<SupCourseAnalyzerMainPage />}
+              />
+              <Route path="/search" element={<Search />} />
+            </Route>
+          </Routes>
+        </HashRouter>
+      </div>
+    </AuthProvider>
   );
 }
 

@@ -1,79 +1,83 @@
-# Getting Started with Create React App
+# Supplementary Course Analyzer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This App will be used to help professors at Sac State create PAL classes for the students
+
+![Sac State Logo](https://github.com/Jdcruz831/Supplementary-Course-Analyzer/blob/main/src/img/sacstatelogo.png)
+
+## Table Of Contents
+
+[Background](#background)
+[Technology](#technology)
+[Testing](#testing)
+[Deployment](#deployment)
+[Developer Instructions](#developer-instructions)
+[Contributors](#contributors)
+[Installation](#installation)
+[Timeline](#timeline)
+
+## Background
+
+The professors at Sacramento State have been struggling to generate schedules for PAL courses. The challenge they face is selecting a suitable time for each PAL course to ensure it's accessible to the students who need it. The goal of the Sac State PAL Course Analyzer is to assist the PAL program in its class scheduling process. Our project aggregates all courses that have an associated PAL class, examines the scheduled times for these courses, and identifies which students are enrolled in which courses to select the optimal time for a PAL course.
+
+Peer Assisted Learning (PAL) offers 1-unit courses available for students enrolled in gateway science and math courses. Students who have already taken a course come and help mentor/tutor other students who are currently taking the course. It gives an opportunity for Sacramento State students to give back and help their peers in their pursuit of education.
+
+## Technology
+
+-Tech Stack: React, Node.js, MaterialsUI, Firebase,\
+-Status: Developmental stages
+
+## Testing
+
+## Deployment
+
+## Developer Instructions
+
+## Prototyping Images
+ERD Diagram 
+
+![erd](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/erd.png)
+
+Prototype Home Page
+
+![proto_home_page](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/proto_home_page.JPG)
+
+Prototype Login Page
+
+![Proto_Login_Page](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/Proto_Login_Page.png)
+
+## Current Examples
+Home Page
+![home_page](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/home_page.JPG)
+
+Login Page
+![login](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/login.PNG)
+
+Registration Page
+![register](https://github.com/kdiep4/Supplementary-Course-Analyzer/blob/main/src/img/register.PNG)
 
 ## Contributors
-Shajaat Ali
-Raj Pannu
-Shaquan Carolina
-Chi Andrus
 
-## Available Scripts
+Shajaat Ali\
+Raj Pannu\
+Shaquan Carolina\
+Chi Andrus\
+Kyle Diep\
+JD Cruz\
+David Chatla\
+Ian Charamuga
 
+<<<<<<< HEAD
 In the project directory, you can run:
 ## ER Diagram
 
 ![ER Diagram](erd-diagram.png)
+=======
+## Installation
+>>>>>>> upstream/main
 
-### `npm start`
+npm install\
+npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Timeline
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![jiratimeline](https://github.com/Jdcruz831/Supplementary-Course-Analyzer/blob/main/src/img/jiratimeline.png)
