@@ -24,7 +24,7 @@ import { signOut } from "firebase/auth";
 const menuOptions = [
   { label: "Home", path: "/" },
   { label: "Search", path: "/search" },
-  { label: "Couse Time Analyzer", path: "/CourseTimeAnalyzer" },
+  { label: "Course Time Analyzer", path: "/CourseTimeAnalyzer" },
   { label: "Creators", path: "/Creators" },
   { label: "Source Data", path: "/SourceData" },
   {
