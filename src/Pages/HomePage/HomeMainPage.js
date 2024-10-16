@@ -54,19 +54,15 @@ function HomeMainPage() {
             <Button component="a" href="/#/SourceData" sx={buttonStyle}>
               Source Data
             </Button>
-            <Button component="a" href="/#/About" sx={buttonStyle}>
-              About Us
-            </Button>
           </Stack>
         </Grid>
-        
         <Grid
           item
           md={6}
           sx={{
             bgcolor: (theme) => theme.palette.primary.main,
             minHeight: "750px",
-            p: 3,
+            p: 7,
           }}
         >
           <Stack spacing={3}>

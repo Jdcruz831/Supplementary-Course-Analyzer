@@ -165,7 +165,7 @@ const Login = () => {
                   error={loginClicked && !email}
                   helperText={loginClicked && !email ? 'Please enter your email' : ''}
                   InputProps={{
-                    sx: { backgroundColor: 'white', width: '75%' }
+                    sx: { backgroundColor: 'white', width: '73.7%' }
                   }}
                 />
               </Grid>
@@ -187,7 +187,7 @@ const Login = () => {
                     error={loginClicked && !password}
                     helperText={loginClicked && !password ? 'Please enter your password' : ''}
                     InputProps={{
-                      sx: { backgroundColor: 'white', width: '75%' }
+                      sx: { backgroundColor: 'white', width: '73.7%' }
                     }}
                   />
                   <Button
@@ -210,7 +210,7 @@ const Login = () => {
             fullWidth
             sx={{ backgroundColor: '#0FA153', color: 'white', mb: 2, 
               padding: '8px 16px', 
-            width: '55%', 
+            width: '55.55%', 
             fontSize: '1rem',
             ml:4,
             }}
@@ -226,7 +226,7 @@ const Login = () => {
             fullWidth
             sx={{ backgroundColor: '#0FA153', color: 'white', mb: 2, 
               padding: '8px 16px', 
-            width: '55%', 
+            width: '55.55%', 
             fontSize: '1rem',
             ml:4,
             }}
