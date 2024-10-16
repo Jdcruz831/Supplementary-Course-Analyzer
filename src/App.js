@@ -34,7 +34,10 @@ function App() {
             {/* Protected Routes */}
             <Route element={<ProtectedRoutes />}>
               <Route path="/" element={<HomeMainPage />} />
-              <Route path="/CourseTimeAnalyzer" element={<CourseTimeAnalyzer />} />
+              <Route
+                path="/CourseTimeAnalyzer"
+                element={<CourseTimeAnalyzer />}
+              />
               <Route path="/Creators" element={<CreatorsMainPage />} />
               <Route path="/SourceData" element={<SourceDataMainPage />} />
               <Route
@@ -51,7 +54,7 @@ function App() {
           </Routes>
         </HashRouter>
       </div>
-    </AuthProvider>  
+    </AuthProvider>
   );
 }
 

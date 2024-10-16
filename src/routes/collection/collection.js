@@ -39,6 +39,44 @@ class CollectionAPI {
       console.log("No such document!");
     }
   };
+
+  /**
+   * Syncs course data to the courses collection in firebase
+   *
+   * @param Array courses - The course objects to be updated or created
+   *
+   */
+  syncDataToFirebase = async function (courses) {
+    if (courses) {
+      for (const [courseName, sections] of Object.entries(courses)) {
+        const courseRef = collection(db, "courses");
+
+        for (const section of sections) {
+          // Create a unique ID based on course name, section, and days
+          const sectionId = `${courseName}-${section.Section}-${section.Days}`;
+
+          // Create a reference to the document
+          const sectionRef = doc(courseRef, sectionId);
+
+          // Set the document (this will update if it exists or create if it doesn't)
+          await setDoc(
+            sectionRef,
+            {
+              course_name: courseName,
+              section: section.Section || "",
+              seats: section.Seats || "",
+              days: section.Days || "",
+              instructor: section.Instructor || "",
+              start_time: section.StartTime || "",
+              end_time: section.EndTime || "",
+              building: section.Building || "",
+            },
+            { merge: true }
+          );
+        }
+      }
+    }
+  };
 }
 
 export const collectionAPI = new CollectionAPI();
